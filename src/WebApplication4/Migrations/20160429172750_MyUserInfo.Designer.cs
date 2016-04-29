@@ -8,9 +8,10 @@ using WebApplication4.Models;
 namespace WebApplication4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160429172750_MyUserInfo")]
+    partial class MyUserInfo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -154,24 +155,6 @@ namespace WebApplication4.Migrations
                     b.HasAnnotation("Relational:TableName", "AspNetUsers");
                 });
 
-            modelBuilder.Entity("WebApplication4.Models.PhysicalInfoRecord", b =>
-                {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("OwnerId");
-
-                    b.Property<float>("height");
-
-                    b.Property<int>("imc");
-
-                    b.Property<DateTime>("recordDate");
-
-                    b.Property<float>("weight");
-
-                    b.HasKey("id");
-                });
-
             modelBuilder.Entity("Microsoft.AspNet.Identity.EntityFramework.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNet.Identity.EntityFramework.IdentityRole")
@@ -202,13 +185,6 @@ namespace WebApplication4.Migrations
                     b.HasOne("WebApplication4.Models.ApplicationUser")
                         .WithMany()
                         .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("WebApplication4.Models.PhysicalInfoRecord", b =>
-                {
-                    b.HasOne("WebApplication4.Models.ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("OwnerId");
                 });
         }
     }
