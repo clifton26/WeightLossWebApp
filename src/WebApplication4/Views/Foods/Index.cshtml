@@ -1,0 +1,338 @@
+@model IEnumerable<WebApplication4.Models.Food>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Alpha_Carot_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ash_g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Beta_Carot_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Beta_Crypt_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Calcium_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Carbohydrt_g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cholestrl_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Choline_Tot_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Copper_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Energy_kcal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FA_Mono_g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FA_Poly_g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FA_Sat_g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fiber_TD_g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Folate_DFE_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Folate_Tot_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Folic_Acid_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Food_Folate_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GmWt_1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GmWt_2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GmWt_Desc1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GmWt_Desc2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Iron_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lipid_Tot_g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lut_Zea_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lycopene_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Magnesium_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Manganese_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Niacin_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Panto_Acid_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phosphorus_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Potassium_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Protein_g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Refuse_Pct)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Retinol_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Riboflavin_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Selenium_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sodium_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sugar_Tot_g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thiamin_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vit_A_IU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vit_A_RAE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vit_B12_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vit_B6_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vit_C_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vit_D_IU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vit_D_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vit_E_mg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vit_K_microg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Water_g)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zinc_mg)
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Alpha_Carot_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ash_g)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Beta_Carot_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Beta_Crypt_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Calcium_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Carbohydrt_g)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cholestrl_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Choline_Tot_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Copper_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Energy_kcal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FA_Mono_g)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FA_Poly_g)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FA_Sat_g)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fiber_TD_g)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Folate_DFE_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Folate_Tot_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Folic_Acid_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Food_Folate_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GmWt_1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GmWt_2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GmWt_Desc1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GmWt_Desc2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Iron_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lipid_Tot_g)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lut_Zea_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lycopene_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Magnesium_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manganese_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Niacin_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Panto_Acid_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phosphorus_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Potassium_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Protein_g)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Refuse_Pct)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Retinol_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Riboflavin_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Selenium_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sodium_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sugar_Tot_g)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Thiamin_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vit_A_IU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vit_A_RAE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vit_B12_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vit_B6_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vit_C_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vit_D_IU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vit_D_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vit_E_mg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vit_K_microg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Water_g)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zinc_mg)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td>
+    </tr>
+}
+</table>
