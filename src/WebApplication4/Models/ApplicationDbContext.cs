@@ -18,5 +18,6 @@ namespace WebApplication4.Models
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         public DbSet<PhysicalInfoRecord> PhysicalInfoRecord { get; set; }
+        public DbSet<Food> Food { get; set; }
     }
 }

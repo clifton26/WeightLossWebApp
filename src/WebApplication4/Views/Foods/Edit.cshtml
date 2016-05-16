@@ -1,0 +1,395 @@
+@model WebApplication4.Models.Food
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Food</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Alpha_Carot_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Alpha_Carot_microg" class="form-control" />
+                <span asp-validation-for="Alpha_Carot_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Ash_g" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Ash_g" class="form-control" />
+                <span asp-validation-for="Ash_g" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Beta_Carot_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Beta_Carot_microg" class="form-control" />
+                <span asp-validation-for="Beta_Carot_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Beta_Crypt_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Beta_Crypt_microg" class="form-control" />
+                <span asp-validation-for="Beta_Crypt_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Calcium_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Calcium_mg" class="form-control" />
+                <span asp-validation-for="Calcium_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Carbohydrt_g" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Carbohydrt_g" class="form-control" />
+                <span asp-validation-for="Carbohydrt_g" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Cholestrl_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Cholestrl_mg" class="form-control" />
+                <span asp-validation-for="Cholestrl_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Choline_Tot_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Choline_Tot_mg" class="form-control" />
+                <span asp-validation-for="Choline_Tot_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Copper_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Copper_mg" class="form-control" />
+                <span asp-validation-for="Copper_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Energy_kcal" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Energy_kcal" class="form-control" />
+                <span asp-validation-for="Energy_kcal" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FA_Mono_g" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FA_Mono_g" class="form-control" />
+                <span asp-validation-for="FA_Mono_g" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FA_Poly_g" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FA_Poly_g" class="form-control" />
+                <span asp-validation-for="FA_Poly_g" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FA_Sat_g" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FA_Sat_g" class="form-control" />
+                <span asp-validation-for="FA_Sat_g" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Fiber_TD_g" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Fiber_TD_g" class="form-control" />
+                <span asp-validation-for="Fiber_TD_g" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Folate_DFE_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Folate_DFE_microg" class="form-control" />
+                <span asp-validation-for="Folate_DFE_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Folate_Tot_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Folate_Tot_microg" class="form-control" />
+                <span asp-validation-for="Folate_Tot_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Folic_Acid_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Folic_Acid_microg" class="form-control" />
+                <span asp-validation-for="Folic_Acid_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Food_Folate_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Food_Folate_microg" class="form-control" />
+                <span asp-validation-for="Food_Folate_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GmWt_1" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GmWt_1" class="form-control" />
+                <span asp-validation-for="GmWt_1" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GmWt_2" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GmWt_2" class="form-control" />
+                <span asp-validation-for="GmWt_2" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GmWt_Desc1" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GmWt_Desc1" class="form-control" />
+                <span asp-validation-for="GmWt_Desc1" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GmWt_Desc2" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GmWt_Desc2" class="form-control" />
+                <span asp-validation-for="GmWt_Desc2" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Iron_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Iron_mg" class="form-control" />
+                <span asp-validation-for="Iron_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Lipid_Tot_g" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Lipid_Tot_g" class="form-control" />
+                <span asp-validation-for="Lipid_Tot_g" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Lut_Zea_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Lut_Zea_microg" class="form-control" />
+                <span asp-validation-for="Lut_Zea_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Lycopene_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Lycopene_microg" class="form-control" />
+                <span asp-validation-for="Lycopene_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Magnesium_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Magnesium_mg" class="form-control" />
+                <span asp-validation-for="Magnesium_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Manganese_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Manganese_mg" class="form-control" />
+                <span asp-validation-for="Manganese_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Niacin_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Niacin_mg" class="form-control" />
+                <span asp-validation-for="Niacin_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Panto_Acid_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Panto_Acid_mg" class="form-control" />
+                <span asp-validation-for="Panto_Acid_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Phosphorus_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Phosphorus_mg" class="form-control" />
+                <span asp-validation-for="Phosphorus_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Potassium_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Potassium_mg" class="form-control" />
+                <span asp-validation-for="Potassium_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Protein_g" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Protein_g" class="form-control" />
+                <span asp-validation-for="Protein_g" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Refuse_Pct" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Refuse_Pct" class="form-control" />
+                <span asp-validation-for="Refuse_Pct" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Retinol_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Retinol_microg" class="form-control" />
+                <span asp-validation-for="Retinol_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Riboflavin_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Riboflavin_mg" class="form-control" />
+                <span asp-validation-for="Riboflavin_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Selenium_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Selenium_microg" class="form-control" />
+                <span asp-validation-for="Selenium_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Sodium_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Sodium_mg" class="form-control" />
+                <span asp-validation-for="Sodium_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Sugar_Tot_g" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Sugar_Tot_g" class="form-control" />
+                <span asp-validation-for="Sugar_Tot_g" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Thiamin_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Thiamin_mg" class="form-control" />
+                <span asp-validation-for="Thiamin_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Vit_A_IU" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Vit_A_IU" class="form-control" />
+                <span asp-validation-for="Vit_A_IU" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Vit_A_RAE" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Vit_A_RAE" class="form-control" />
+                <span asp-validation-for="Vit_A_RAE" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Vit_B12_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Vit_B12_microg" class="form-control" />
+                <span asp-validation-for="Vit_B12_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Vit_B6_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Vit_B6_mg" class="form-control" />
+                <span asp-validation-for="Vit_B6_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Vit_C_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Vit_C_mg" class="form-control" />
+                <span asp-validation-for="Vit_C_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Vit_D_IU" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Vit_D_IU" class="form-control" />
+                <span asp-validation-for="Vit_D_IU" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Vit_D_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Vit_D_microg" class="form-control" />
+                <span asp-validation-for="Vit_D_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Vit_E_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Vit_E_mg" class="form-control" />
+                <span asp-validation-for="Vit_E_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Vit_K_microg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Vit_K_microg" class="form-control" />
+                <span asp-validation-for="Vit_K_microg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Water_g" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Water_g" class="form-control" />
+                <span asp-validation-for="Water_g" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Zinc_mg" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Zinc_mg" class="form-control" />
+                <span asp-validation-for="Zinc_mg" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
