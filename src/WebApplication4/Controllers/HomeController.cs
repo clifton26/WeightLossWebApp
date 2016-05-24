@@ -8,8 +8,13 @@ namespace WebApplication4.Controllers
 {
     public class HomeController : Controller
     {
+        public string backgroundImage= "";
+
         public IActionResult Index()
         {
+
+            // carga de la pagina
+            
             return View();
         }
 
