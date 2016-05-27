@@ -87,9 +87,21 @@ img { max-width: 100%; }
 
 .top-content .text {
 	color: #fff;
+    
 }
 
-.top-content .text h1 { color: #fff; }
+.top-content .text h1 { 
+   color: #fff; 
+ 
+
+}
+
+.top-content .text h3 { 
+   color: #FFFFFF; 
+ 
+
+}
+
 
 .top-content .description {
 	margin: 20px 0 10px 0;

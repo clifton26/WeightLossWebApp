@@ -2,6 +2,9 @@
     background-image: url('../images/food_delicious_set_many_different_88293_602x339.jpg');
     padding-top: 50px;
     padding-bottom: 20px; 
+    
+    
+    
 }
 
 /* Wrapping element */
@@ -9,12 +12,16 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    color: #F7EFEF;
+    
 }
 h1 {
     text-align: center;
+    
 }
 h3 {
     text-align: center;
+    
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
