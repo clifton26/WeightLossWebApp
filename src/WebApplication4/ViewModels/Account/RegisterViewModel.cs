@@ -47,15 +47,5 @@ namespace WebApplication4.ViewModels.Account
         [Display(Name = "Sex")]
         public string Sex { get; set; }
 
-
-        public List<string> getSexOptions()
-        {
-            List<string> sexOptions = new List<string>();
-            sexOptions.Add("Male");
-            sexOptions.Add("Female");
-
-            return sexOptions;
-        }
-
     }
 }
