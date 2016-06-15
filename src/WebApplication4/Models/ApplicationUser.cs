@@ -10,7 +10,7 @@ namespace WebApplication4.Models
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
-       
+
         [Required]
         public String name { get; set; }
 
@@ -19,7 +19,7 @@ namespace WebApplication4.Models
 
         [Required]
         public int age { get; set; }
-
+        
         public List<PhysicalInfoRecord> physicalRecords { get; set; } 
     }
 }

@@ -57,9 +57,11 @@ namespace WebApplication4.Controllers
                 PhoneNumber = await _userManager.GetPhoneNumberAsync(user),
                 TwoFactor = await _userManager.GetTwoFactorEnabledAsync(user),
                 Logins = await _userManager.GetLoginsAsync(user),
-                BrowserRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user)
+                BrowserRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user),
+                Email = await _userManager.GetEmailAsync(user)
             };
             return View(model);
+
         }
 
         //
@@ -200,6 +202,13 @@ namespace WebApplication4.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult ChangeInfo()
+        {
+            return View();
+        }
+
+      
         //
         // POST: /Manage/ChangePassword
         [HttpPost]
@@ -226,6 +235,7 @@ namespace WebApplication4.Controllers
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
 
+       
         //
         // GET: /Manage/SetPassword
         [HttpGet]
