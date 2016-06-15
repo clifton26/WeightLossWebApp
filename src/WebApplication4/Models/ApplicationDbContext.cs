@@ -19,5 +19,6 @@ namespace WebApplication4.Models
         }
         public DbSet<PhysicalInfoRecord> PhysicalInfoRecord { get; set; }
         public DbSet<Food> Food { get; set; }
+        public DbSet<FoodCalculator> FoodCalculator { get; set; }
     }
 }
