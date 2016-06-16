@@ -15,7 +15,7 @@ namespace WebApplication4.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
             migrationBuilder.CreateTable(
-                name: "PhysicalInfoRecord",
+                name: "PhysicalInfoRecord1",
                 columns: table => new
                 {
                     id = table.Column<int>(nullable: false)

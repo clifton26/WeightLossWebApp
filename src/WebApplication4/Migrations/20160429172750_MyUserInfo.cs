@@ -15,7 +15,7 @@ namespace WebApplication4.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
             migrationBuilder.AddColumn<int>(
                 name: "age",
-                table: "AspNetUsers",
+                table: "AspNetUsers1",
                 nullable: false,
                 defaultValue: 0);
             migrationBuilder.AddColumn<string>(

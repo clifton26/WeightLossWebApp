@@ -14,11 +14,13 @@ namespace WebApplication4.Controllers
         {
             _context = context;    
         }
+        
 
         // GET: Foods
         public IActionResult Index()
         {
-            return View(_context.Food.ToList());
+            ViewBag.Foods = _context.Food.ToList();
+            return View();
         }
 
         // GET: Foods/Details/5
