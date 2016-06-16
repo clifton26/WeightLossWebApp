@@ -14,6 +14,8 @@ namespace WebApplication4.ViewModels.Manage
 
         public string PhoneNumber { get; set; }
 
+        public string Email { get; set; }
+
         public bool TwoFactor { get; set; }
 
         public bool BrowserRemembered { get; set; }

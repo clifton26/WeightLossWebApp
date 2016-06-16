@@ -10,6 +10,19 @@
 
 <h2>@ViewData["Title"].</h2>
 
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+<!-- font awesome css -->
+<link  href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+
 <div style="clear:both">
     <h4>Please enter your username and password.</h4>
     <hr />
@@ -34,7 +47,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-default">Log in</button>
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span> Login</a></button>
                 </div>
             </div>
         </form>
@@ -43,17 +56,20 @@
     <div style="float:right; width: 50%; ">
         
         <div class="col-md-offset-2 col-md-10">
-            <h4>Or login with a social network</h4>
-            <a class="btn btn-default" href="#">
-                Facebook
-            </a>
-            <a class="btn btn-default" href="#">
-                Twitter
-            </a>
-            <a class="btn btn-default" href="#">
-                Google Plus
-            </a>
-        </div>
+                <h4>Or login with a social network</h4>
+                <div class="btn-group">
+                    <a class='btn btn-primary disabled'><i class="fa fa-facebook" style="width:10px; height:14px"></i></a>
+                    <a class='btn btn-primary ' href='#' style="width:7em">Facebook</a>
+                </div>	
+                <div class="btn-group">
+                    <a class='btn btn-info disabled'><i class="fa fa-twitter" style="width:10px; height:14px"></i></a>
+                    <a class='btn btn-info ' href='#' style="width:7em"> Twitter</a>
+                </div>
+                <div class="btn-group">
+                    <a class='btn btn-danger disabled'><i class="fa fa-google-plus" style="width:10px; height:14px"></i></a>
+                    <a class='btn btn-danger' href='#' style="width:7em;"> Google +</a>
+                </div>
+         </div>
     </div>
 
 

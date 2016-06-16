@@ -1,0 +1,66 @@
+@model WebApplication4.Models.FoodCalculator
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>FoodCalculator</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="FoodName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FoodName" class="form-control" />
+                <span asp-validation-for="FoodName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FoodQuantity" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FoodQuantity" class="form-control" />
+                <span asp-validation-for="FoodQuantity" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Calories" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Calories" class="form-control" />
+                <span asp-validation-for="Calories" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Grams" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Grams" class="form-control" />
+                <span asp-validation-for="Grams" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Lipid" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Lipid" class="form-control" />
+                <span asp-validation-for="Lipid" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

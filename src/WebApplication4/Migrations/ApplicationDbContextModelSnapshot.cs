@@ -267,6 +267,25 @@ namespace WebApplication4.Migrations
                     b.HasKey("Id");
                 });
 
+            modelBuilder.Entity("WebApplication4.Models.FoodCalculator", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Calories");
+
+                    b.Property<string>("FoodName")
+                        .IsRequired();
+
+                    b.Property<int>("FoodQuantity");
+
+                    b.Property<int>("Grams");
+
+                    b.Property<int>("Lipid");
+
+                    b.HasKey("Id");
+                });
+
             modelBuilder.Entity("WebApplication4.Models.PhysicalInfoRecord", b =>
                 {
                     b.Property<int>("id")
