@@ -10,7 +10,7 @@ namespace WebApplication4.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "AspNetRoles",
+                name: "AspNetRoles111",
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
