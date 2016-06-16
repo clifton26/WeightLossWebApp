@@ -34,10 +34,9 @@
                 </tr>
             </thead>
             <tbody style="color:black">
-                <tr>
-                    @foreach (var regist in Model)
-                    {
-
+                @foreach (var regist in Model)
+                {
+                    <tr>
                         <td>
                             @Html.DisplayFor(modelItem => regist.FoodName)
                         </td>
@@ -53,9 +52,8 @@
                         <td>
                             @Html.DisplayFor(modelItem => regist.Lipid)
                         </td>
-                        
-                    }
-                <tr>
+                    </tr>
+                 }
             </tbody>
         </table>
         }

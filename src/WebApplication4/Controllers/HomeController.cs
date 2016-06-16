@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using WebApplication4.Models;
+using Microsoft.AspNet.Identity;
+
 
 namespace WebApplication4.Controllers
 {
@@ -17,10 +19,19 @@ namespace WebApplication4.Controllers
             _context = context;
         }
 
-        public IActionResult Index(String userId)
+        public IActionResult Index()
         {
-            var lista = _context.FoodCalculator.Where(r => r.OwnerId.Equals(userId)).ToList();
-            return View(lista);
+            if (User.Identity.IsAuthenticated)
+            {
+                var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
+                var lista = _context.FoodCalculator.Where(r => r.OwnerId.Equals(user.Id)).ToList();
+                return View(lista);
+
+            }else
+            {
+                return View();
+            }
+
         }
 
         public IActionResult About()

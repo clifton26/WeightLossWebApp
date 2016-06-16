@@ -1,10 +1,11 @@
 using System.Linq;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.Data.Entity;
+using Microsoft.AspNet.Identity;
 using WebApplication4.Models;
 using System.Collections.Generic;
 using WebApplication4.ViewModels;
+
 
 namespace WebApplication4.Controllers
 {
@@ -14,7 +15,7 @@ namespace WebApplication4.Controllers
 
         public FoodCalculatorsController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
 
         // GET: FoodCalculators
@@ -63,11 +64,13 @@ namespace WebApplication4.Controllers
         public IActionResult Create(FoodsCalculator viewModel)
         {
             var food = _context.Food.Single(m => m.Id == viewModel.foodId);
+            var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
 
             viewModel.calculator.FoodName = food.Name;
             viewModel.calculator.Grams = 100* viewModel.calculator.FoodQuantity;
             viewModel.calculator.Lipid = (int) food.Lipid_Tot_g * viewModel.calculator.FoodQuantity;
             viewModel.calculator.Calories = (int) food.Energy_kcal * viewModel.calculator.FoodQuantity;
+            viewModel.calculator.Owner = user;
 
             _context.FoodCalculator.Add(viewModel.calculator);
             _context.SaveChanges();
