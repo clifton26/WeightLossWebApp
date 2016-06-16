@@ -8,8 +8,8 @@ using WebApplication4.Models;
 namespace WebApplication4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160513170447_Food")]
-    partial class Food
+    [Migration("20160616155704_migrations")]
+    partial class migrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -264,6 +264,25 @@ namespace WebApplication4.Migrations
                     b.Property<float>("Water_g");
 
                     b.Property<float>("Zinc_mg");
+
+                    b.HasKey("Id");
+                });
+
+            modelBuilder.Entity("WebApplication4.Models.FoodCalculator", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Calories");
+
+                    b.Property<string>("FoodName")
+                        .IsRequired();
+
+                    b.Property<int>("FoodQuantity");
+
+                    b.Property<int>("Grams");
+
+                    b.Property<int>("Lipid");
 
                     b.HasKey("Id");
                 });
