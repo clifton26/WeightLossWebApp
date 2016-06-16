@@ -19,13 +19,13 @@ namespace WebApplication4.Models
         public ApplicationUser Owner { get; set; }
 
         [Required]
-        public float weight { get; set; }
+        public decimal weight { get; set; }
 
         [Required]
-        public float height { get; set; }
+        public decimal height { get; set; }
 
         [Required]
-        public float imc { get; set; }
+        public decimal imc { get; set; }
     
         [Required]
         public DateTime recordDate { get; set; }

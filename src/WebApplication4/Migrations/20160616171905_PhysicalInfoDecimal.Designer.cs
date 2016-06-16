@@ -8,9 +8,10 @@ using WebApplication4.Models;
 namespace WebApplication4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160616171905_PhysicalInfoDecimal")]
+    partial class PhysicalInfoDecimal
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -293,13 +294,13 @@ namespace WebApplication4.Migrations
 
                     b.Property<string>("OwnerId");
 
-                    b.Property<decimal>("height");
+                    b.Property<float>("height");
 
                     b.Property<decimal>("imc");
 
                     b.Property<DateTime>("recordDate");
 
-                    b.Property<decimal>("weight");
+                    b.Property<float>("weight");
 
                     b.HasKey("id");
                 });

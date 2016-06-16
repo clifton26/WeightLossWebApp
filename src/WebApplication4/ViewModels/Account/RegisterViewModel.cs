@@ -36,11 +36,11 @@ namespace WebApplication4.ViewModels.Account
 
         [Required]
         [Display(Name = "Height")]
-        public int Height { get; set; }
+        public decimal Height { get; set; }
 
         [Required]
         [Display(Name = "Weight")]
-        public int Weight { get; set; }
+        public decimal Weight { get; set; }
 
         [Required]
         [StringLength(25)]
