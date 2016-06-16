@@ -20,6 +20,7 @@
             physical exercise, etc. The results achieved through a period of time.
         </h4>    
         
+        @if (User.Identity.IsAuthenticated) {
         <table class="table table-bordered" style="background-color:#F8F8F8">
             <thead style="color:black">
                 <tr>
@@ -50,6 +51,7 @@
                 </tr>
             </tbody>
         </table>
+        }
     </div>
 </body>
 </html>
