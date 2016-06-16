@@ -4,6 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
+
 <h2>Create</h2>
 
 <form asp-action="Create">
@@ -11,13 +12,6 @@
         <h4>FoodCalculator</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <label asp-for="Calories" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Calories" class="form-control" />
-                <span asp-validation-for="Calories" class="text-danger" />
-            </div>
-        </div>
         <div class="form-group">
             <label asp-for="FoodName" class="col-md-2 control-label"></label>
             <div class="col-md-10">
@@ -30,6 +24,13 @@
             <div class="col-md-10">
                 <input asp-for="FoodQuantity" class="form-control" />
                 <span asp-validation-for="FoodQuantity" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Calories" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Calories" class="form-control" />
+                <span asp-validation-for="Calories" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
