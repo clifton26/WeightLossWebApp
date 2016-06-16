@@ -3,6 +3,8 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using WebApplication4.Models;
+using System.Collections.Generic;
+using WebApplication4.ViewModels;
 
 namespace WebApplication4.Controllers
 {
@@ -41,7 +43,12 @@ namespace WebApplication4.Controllers
         // GET: FoodCalculators/Create
         public IActionResult Create()
         {
-            return View();
+
+            List<Food> foods = _context.Food.ToList();
+            FoodsCalculator viewModel = new FoodsCalculator();
+            viewModel.allFood = foods;
+
+            return View(viewModel);
         }
 
         // POST: FoodCalculators/Create
