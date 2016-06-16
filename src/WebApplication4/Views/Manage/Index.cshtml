@@ -35,13 +35,9 @@
             {
                 <dt style="color:#FF8C00">Overweigh</dt>
             }
-            @if (Model.Imc > 30 && Model.Imc < (decimal)34.99)
+            @if (Model.Imc > 30)
             {
                 <dt style="color:#B80000">Obesity</dt>
-            }
-            @if (Model.Imc > 30 && Model.Imc < (decimal)34.99)
-            {
-                <dt style="color:red">Overweight</dt>
             }
         </dt>
         <dt><br /></dt>

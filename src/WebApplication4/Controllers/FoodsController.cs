@@ -4,15 +4,16 @@ using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using WebApplication4.Models;
 
+
+
 namespace WebApplication4.Controllers
 {
-    public class FoodsController : Controller
+     public class FoodsController : Controller
     {
         private ApplicationDbContext _context;
-
         public FoodsController(ApplicationDbContext context)
         {
-            _context = context;    
+            _context = context;
         }
         
 
