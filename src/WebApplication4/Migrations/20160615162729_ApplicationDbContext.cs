@@ -14,7 +14,7 @@ namespace WebApplication4.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
             migrationBuilder.AddColumn<long>(
-                name: "OrganizationId",
+                name: "OrganizationId1",
                 table: "AspNetUsers",
                 nullable: true);
             migrationBuilder.AddForeignKey(

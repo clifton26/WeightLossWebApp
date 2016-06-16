@@ -15,7 +15,7 @@ namespace WebApplication4.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
             migrationBuilder.CreateTable(
-                name: "FoodCalculator",
+                name: "FoodCalculator1",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
