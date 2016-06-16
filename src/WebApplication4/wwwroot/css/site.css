@@ -1,10 +1,11 @@
 ﻿body {
-    background-image: url('../images/food_delicious_set_many_different_88293_602x339.jpg');
+    background: url('../images/Bk1.png') no-repeat center center fixed;
     padding-top: 50px;
-    padding-bottom: 20px; 
-    
-    
-    
+    padding-bottom: 20px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 /* Wrapping element */
@@ -15,6 +16,7 @@
     color: #F7EFEF;
     
 }
+
 h1 {
     text-align: center;
     
