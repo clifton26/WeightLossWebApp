@@ -25,7 +25,7 @@ namespace WebApplication4.Models
         public float height { get; set; }
 
         [Required]
-        public int imc { get; set; }
+        public float imc { get; set; }
     
         [Required]
         public DateTime recordDate { get; set; }

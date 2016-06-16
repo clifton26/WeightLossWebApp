@@ -9,13 +9,20 @@
 <div>
    <h4>Profile</h4>
     <hr />
-        <dt>Name</dt>
-        <dt>Age</dt>
+        <dt>Name</dt>@Model.Name
+        <dt><br /></dt>
+        <dt>Age</dt>@Model.Age
+        <dt><br /></dt>
         <dt>Height</dt>
+        <dt><br /></dt>
         <dt>Weight</dt>
+        <dt><br /></dt>
         <dt>IMC</dt>
-        <dt>Sex</dt>
+        <dt><br /></dt>
+        <dt>Sex</dt>@Model.Sex
+        <dt><br /></dt>
         <dt>Email</dt>@Model.Email
+        <dt><br /></dt>
         <div class="personal_container">
         </div>
 </div>
@@ -27,11 +34,11 @@
         <dd>
             @if (Model.HasPassword)
             {
-                <text>[&nbsp;&nbsp;<a asp-controller="Manage" asp-action="ChangePassword">Change</a>&nbsp;&nbsp;]</text>
+                <text><a asp-controller="Manage" asp-action="ChangePassword" style="color:white" class="btn btn-xs btn-success">Change</a></text>
             }
             else
             {
-                <text>[&nbsp;&nbsp;<a asp-controller="Manage" asp-action="SetPassword">Create</a>&nbsp;&nbsp;]</text>
+                <text>[&nbsp;&nbsp;<a asp-controller="Manage" asp-action="SetPassword" >Create</a>&nbsp;&nbsp;]</text>
             }
         </dd>
     </dl>
@@ -43,7 +50,7 @@
         <dl class="dl-horizontal">
             <dt>Physical Information:</dt>
             <dd>
-                <text>[&nbsp;&nbsp;<a asp-controller="Manage" asp-action="ChangeInfo">Change</a>&nbsp;&nbsp;]</text>
+                <text><a asp-controller="Manage" asp-action="ChangeInfo" style="color:white" class="btn btn-xs  btn-success"> Change </a></text>
             </dd>
         </dl>
 </div>

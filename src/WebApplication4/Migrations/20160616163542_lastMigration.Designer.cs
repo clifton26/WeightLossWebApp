@@ -8,8 +8,8 @@ using WebApplication4.Models;
 namespace WebApplication4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160615162729_ApplicationDbContext")]
-    partial class ApplicationDbContext
+    [Migration("20160616163542_lastMigration")]
+    partial class lastMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -122,8 +122,6 @@ namespace WebApplication4.Migrations
 
                     b.Property<string>("NormalizedUserName")
                         .HasAnnotation("MaxLength", 256);
-
-                    b.Property<long?>("OrganizationId");
 
                     b.Property<string>("PasswordHash");
 
@@ -270,6 +268,25 @@ namespace WebApplication4.Migrations
                     b.HasKey("Id");
                 });
 
+            modelBuilder.Entity("WebApplication4.Models.FoodCalculator", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Calories");
+
+                    b.Property<string>("FoodName")
+                        .IsRequired();
+
+                    b.Property<int>("FoodQuantity");
+
+                    b.Property<int>("Grams");
+
+                    b.Property<int>("Lipid");
+
+                    b.HasKey("Id");
+                });
+
             modelBuilder.Entity("WebApplication4.Models.PhysicalInfoRecord", b =>
                 {
                     b.Property<int>("id")
@@ -279,7 +296,7 @@ namespace WebApplication4.Migrations
 
                     b.Property<float>("height");
 
-                    b.Property<int>("imc");
+                    b.Property<float>("imc");
 
                     b.Property<DateTime>("recordDate");
 

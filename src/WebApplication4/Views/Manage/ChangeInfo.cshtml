@@ -1,5 +1,4 @@
-﻿@model ChangeInfoViewModel
-@{
+﻿@{
     ViewData["Title"] = "Change physical Information";
 }
 
@@ -8,19 +7,19 @@
 <form asp-controller="Manage" asp-action="ChangeInfo" method="post" class="form-horizontal" role="form">
     <h4>Change Info Form</h4>
     <hr />
-    <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
+   <!--  <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
     <div class="form-group">
-        <label asp-for="NewWeight" class="col-md-2 control-label"></label>
+        <label asp-for="New_Weight" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            <input asp-for="NewWeight" class="form-control" />
-            <span asp-validation-for="NewWeight" class="text-danger"></span>
+            <input asp-for="New_Weight" class="form-control" />
+            <span asp-validation-for="New_Weight" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="NewHeight" class="col-md-2 control-label"></label>
+        <label asp-for="New_Height" class="col-md-2 control-label"></label>
         <div class="col-md-10">
-            <input asp-for="NewHeight" class="form-control" />
-            <span asp-validation-for="NewHeight" class="text-danger"></span>
+            <input asp-for="New_Height" class="form-control" />
+            <span asp-validation-for="New_Height" class="text-danger"></span>
         </div>
     </div>
 
@@ -28,7 +27,7 @@
         <div class="col-md-offset-2 col-md-10">
             <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Change Info </a></button>
         </div>
-    </div>
+    </div> -->
 </form>
 
 @section Scripts {

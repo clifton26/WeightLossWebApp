@@ -295,7 +295,7 @@ namespace WebApplication4.Migrations
 
                     b.Property<float>("height");
 
-                    b.Property<int>("imc");
+                    b.Property<float>("imc");
 
                     b.Property<DateTime>("recordDate");
 

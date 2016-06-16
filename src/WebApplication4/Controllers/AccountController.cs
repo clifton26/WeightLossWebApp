@@ -23,19 +23,21 @@ namespace WebApplication4.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private ApplicationDbContext _context;
 
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
             ISmsSender smsSender,
-            ILoggerFactory loggerFactory)
+            ILoggerFactory loggerFactory, ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
+            _context = context;
         }
 
         //
@@ -94,6 +96,7 @@ namespace WebApplication4.Controllers
         {
             return View();
         }
+        
 
         //
         // POST: /Account/Register
@@ -104,10 +107,19 @@ namespace WebApplication4.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                int imc = (model.Weight / (model.Height * model.Height));
+
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, name = model.Name, age = model.Age, sex = model.Sex };
+                var physicalInfo = new PhysicalInfoRecord { Owner = user, height = model.Height, imc = imc  , weight = model.Weight, recordDate = DateTime.Now };
+                
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
+                    _context.PhysicalInfoRecord.Add(physicalInfo);
+                    _context.SaveChanges();
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=532713
                     // Send an email with this link
                     //var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

@@ -21,19 +21,21 @@ namespace WebApplication4.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private ApplicationDbContext db;
 
         public ManageController(
         UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager,
         IEmailSender emailSender,
         ISmsSender smsSender,
-        ILoggerFactory loggerFactory)
+        ILoggerFactory loggerFactory, ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<ManageController>();
+            db = context;
         }
 
         //
@@ -51,6 +53,9 @@ namespace WebApplication4.Controllers
                 : "";
 
             var user = await GetCurrentUserAsync();
+           
+            //ApplicationUser userComplete = db.Users.Single(us => us.Id == user.);
+
             var model = new IndexViewModel
             {
                 HasPassword = await _userManager.HasPasswordAsync(user),
@@ -58,8 +63,14 @@ namespace WebApplication4.Controllers
                 TwoFactor = await _userManager.GetTwoFactorEnabledAsync(user),
                 Logins = await _userManager.GetLoginsAsync(user),
                 BrowserRemembered = await _signInManager.IsTwoFactorClientRememberedAsync(user),
-                Email = await _userManager.GetEmailAsync(user)
-            };
+                Email = await _userManager.GetEmailAsync(user),
+                Name = user.name,
+                Age = user.age,
+                Sex =  user.sex,
+             };
+
+
+
             return View(model);
 
         }
@@ -235,7 +246,6 @@ namespace WebApplication4.Controllers
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
 
-       
         //
         // GET: /Manage/SetPassword
         [HttpGet]

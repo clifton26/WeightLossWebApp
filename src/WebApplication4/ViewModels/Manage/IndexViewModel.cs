@@ -19,5 +19,16 @@ namespace WebApplication4.ViewModels.Manage
         public bool TwoFactor { get; set; }
 
         public bool BrowserRemembered { get; set; }
+
+        public string Name { get; set; }
+
+        public int Age { get; set; }
+
+        public string Sex { get; set; }
+
+        public int Weigth { get; set; }
+
+        public int Heigth { get; set; }
+
     }
 }

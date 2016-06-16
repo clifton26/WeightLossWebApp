@@ -4,7 +4,7 @@ using Microsoft.Data.Entity.Migrations;
 
 namespace WebApplication4.Migrations
 {
-    public partial class ApplicationDbContext : Migration
+    public partial class lastMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,10 +13,10 @@ namespace WebApplication4.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.AddColumn<long>(
-                name: "OrganizationId",
-                table: "AspNetUsers",
-                nullable: true);
+            migrationBuilder.AlterColumn<float>(
+                name: "imc",
+                table: "PhysicalInfoRecord",
+                nullable: false);
             migrationBuilder.AddForeignKey(
                 name: "FK_IdentityRoleClaim<string>_IdentityRole_RoleId",
                 table: "AspNetRoleClaims",
@@ -61,7 +61,10 @@ namespace WebApplication4.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.DropColumn(name: "OrganizationId", table: "AspNetUsers");
+            migrationBuilder.AlterColumn<int>(
+                name: "imc",
+                table: "PhysicalInfoRecord",
+                nullable: false);
             migrationBuilder.AddForeignKey(
                 name: "FK_IdentityRoleClaim<string>_IdentityRole_RoleId",
                 table: "AspNetRoleClaims",
