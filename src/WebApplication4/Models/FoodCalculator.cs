@@ -8,6 +8,7 @@ namespace WebApplication4.Models
 {
     public class FoodCalculator
     {
+        [Required]
         public int Id { get; set; }
         [Required]
         public String FoodName { get; set; }
