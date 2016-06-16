@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<WebApplication4.Models.FoodCalculator>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -26,29 +28,34 @@
                 <tr>
                     <th>Food Name</th>
                     <th>Food quantity</th>
+                    <th>Grams</th>
                     <th>Calories</th>
                     <th>Lipids</th>
                 </tr>
             </thead>
             <tbody style="color:black">
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>a</td>
-                </tr>
+                    @foreach (var regist in Model)
+                    {
+
+                        <td>
+                            @Html.DisplayFor(modelItem => regist.FoodName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => regist.FoodQuantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => regist.Grams)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => regist.Calories)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => regist.Lipid)
+                        </td>
+                        
+                    }
                 <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>a</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>a</td>
-                </tr>
             </tbody>
         </table>
         }
