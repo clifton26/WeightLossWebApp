@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +10,8 @@ namespace WebApplication4.ViewModels
     public class FoodsCalculator
     {
 
-        public List<Food> allFood { get; set; }
+        public int foodId { get; set; }
+        public IEnumerable<SelectListItem> selectList { get; set; }
         public FoodCalculator calculator { get; set; }
         
     }

@@ -8,10 +8,9 @@ using WebApplication4.Models;
 namespace WebApplication4.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160616163542_lastMigration")]
-    partial class lastMigration
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -294,13 +293,13 @@ namespace WebApplication4.Migrations
 
                     b.Property<string>("OwnerId");
 
-                    b.Property<float>("height");
+                    b.Property<decimal>("height");
 
-                    b.Property<float>("imc");
+                    b.Property<decimal>("imc");
 
                     b.Property<DateTime>("recordDate");
 
-                    b.Property<float>("weight");
+                    b.Property<decimal>("weight");
 
                     b.HasKey("id");
                 });

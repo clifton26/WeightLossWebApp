@@ -4,7 +4,7 @@ using Microsoft.Data.Entity.Migrations;
 
 namespace WebApplication4.Migrations
 {
-    public partial class lastMigration : Migration
+    public partial class PhysicalInfoDecimal : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,7 +13,7 @@ namespace WebApplication4.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.AlterColumn<float>(
+            migrationBuilder.AlterColumn<decimal>(
                 name: "imc",
                 table: "PhysicalInfoRecord",
                 nullable: false);
@@ -61,7 +61,7 @@ namespace WebApplication4.Migrations
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserLogin<string>_ApplicationUser_UserId", table: "AspNetUserLogins");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_IdentityRole_RoleId", table: "AspNetUserRoles");
             migrationBuilder.DropForeignKey(name: "FK_IdentityUserRole<string>_ApplicationUser_UserId", table: "AspNetUserRoles");
-            migrationBuilder.AlterColumn<int>(
+            migrationBuilder.AlterColumn<float>(
                 name: "imc",
                 table: "PhysicalInfoRecord",
                 nullable: false);

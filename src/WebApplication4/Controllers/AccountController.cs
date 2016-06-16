@@ -108,9 +108,11 @@ namespace WebApplication4.Controllers
             if (ModelState.IsValid)
             {
 
-                int imc = (model.Weight / (model.Height * model.Height));
+                model.Height = model.Height / 100;
 
-
+                decimal imc = (model.Weight / (model.Height * model.Height));
+        
+              
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email, name = model.Name, age = model.Age, sex = model.Sex };
                 var physicalInfo = new PhysicalInfoRecord { Owner = user, height = model.Height, imc = imc  , weight = model.Weight, recordDate = DateTime.Now };
                 
