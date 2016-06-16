@@ -43,10 +43,16 @@ namespace WebApplication4.Controllers
         // GET: FoodCalculators/Create
         public IActionResult Create()
         {
+            FoodsCalculator viewModel = new FoodsCalculator();
 
             List<Food> foods = _context.Food.ToList();
-            FoodsCalculator viewModel = new FoodsCalculator();
-            viewModel.allFood = foods;
+            viewModel.selectList = 
+                from f in foods
+            select new SelectListItem
+            {
+                Text = f.Name,
+                Value = f.Id.ToString()
+            };
 
             return View(viewModel);
         }
@@ -54,15 +60,20 @@ namespace WebApplication4.Controllers
         // POST: FoodCalculators/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(FoodCalculator foodCalculator)
+        public IActionResult Create(FoodsCalculator viewModel)
         {
-            if (ModelState.IsValid)
-            {
-                _context.FoodCalculator.Add(foodCalculator);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(foodCalculator);
+            var food = _context.Food.Single(m => m.Id == viewModel.foodId);
+
+            viewModel.calculator.FoodName = food.Name;
+            viewModel.calculator.Grams = 100* viewModel.calculator.FoodQuantity;
+            viewModel.calculator.Lipid = (int) food.Lipid_Tot_g * viewModel.calculator.FoodQuantity;
+            viewModel.calculator.Calories = (int) food.Energy_kcal * viewModel.calculator.FoodQuantity;
+
+            _context.FoodCalculator.Add(viewModel.calculator);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+
         }
 
         // GET: FoodCalculators/Edit/5
