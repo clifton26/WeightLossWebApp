@@ -13,11 +13,37 @@
         <dt><br /></dt>
         <dt>Age</dt>@Model.Age
         <dt><br /></dt>
-        <dt>Height</dt>
+        <dt>Height</dt>@Model.Heigth (m)
         <dt><br /></dt>
-        <dt>Weight</dt>
+        <dt>Weight</dt>@Model.Weigth (Kg)
         <dt><br /></dt>
-        <dt>IMC</dt>
+        <dt>IMC</dt>@Model.Imc
+        <dt>
+            @if (Model.Imc < 17)
+            {
+                <dt style="color:#B80000">Very Underweight</dt>
+            }
+            @if (Model.Imc > 17 && Model.Imc < (decimal)18.49)
+            {
+                <dt style="color:#FF8C00">Under Weight</dt>
+            }
+            @if (Model.Imc > (decimal)18.5 && Model.Imc < (decimal)24.99)
+            {
+                <dt style="color:#6B8E23">Normal Weight</dt>
+            }
+            @if (Model.Imc > 25 && Model.Imc < (decimal)29.99)
+            {
+                <dt style="color:#FF8C00">Overweigh</dt>
+            }
+            @if (Model.Imc > 30 && Model.Imc < (decimal)34.99)
+            {
+                <dt style="color:#B80000">Obesity</dt>
+            }
+            @if (Model.Imc > 30 && Model.Imc < (decimal)34.99)
+            {
+                <dt style="color:red">Overweight</dt>
+            }
+        </dt>
         <dt><br /></dt>
         <dt>Sex</dt>@Model.Sex
         <dt><br /></dt>

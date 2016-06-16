@@ -26,9 +26,11 @@ namespace WebApplication4.ViewModels.Manage
 
         public string Sex { get; set; }
 
-        public int Weigth { get; set; }
+        public decimal Weigth { get; set; }
 
-        public int Heigth { get; set; }
+        public decimal Heigth { get; set; }
+
+        public decimal Imc { get; set; }
 
     }
 }

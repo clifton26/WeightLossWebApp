@@ -54,7 +54,7 @@ namespace WebApplication4.Controllers
 
             var user = await GetCurrentUserAsync();
            
-            //ApplicationUser userComplete = db.Users.Single(us => us.Id == user.);
+            PhysicalInfoRecord physicalInfo = db.PhysicalInfoRecord.Single(record => record.OwnerId.Equals(user.Id));
 
             var model = new IndexViewModel
             {
@@ -66,13 +66,12 @@ namespace WebApplication4.Controllers
                 Email = await _userManager.GetEmailAsync(user),
                 Name = user.name,
                 Age = user.age,
-                Sex =  user.sex,
+                Sex = user.sex,
+                Imc = physicalInfo.imc,
+                Heigth = physicalInfo.height,
+                Weigth = physicalInfo.weight
              };
-
-
-
             return View(model);
-
         }
 
         //
@@ -244,6 +243,23 @@ namespace WebApplication4.Controllers
                 return View(model);
             }
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangeInfo(ChangeInfoViewModel model, PhysicalInfoRecord viewModel)
+        {
+            var user = await GetCurrentUserAsync();
+            var p = db.PhysicalInfoRecord.Single(record => record.OwnerId.Equals(user.Id));
+            p.height = model.New_Height/100;
+            p.weight = model.New_Weight;
+
+            p.imc = model.New_Weight / (model.New_Height / 100 * model.New_Height / 100);
+
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Manage");
         }
 
         //
