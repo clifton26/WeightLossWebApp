@@ -17,6 +17,8 @@ namespace WebApplication4.Models
         [Required]
         public String FoodName { get; set; }
 
+        public String Meal { get; set; }
+
         public String OwnerId { get; set; }
     
         [ForeignKey("OwnerId")]
@@ -34,6 +36,6 @@ namespace WebApplication4.Models
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime recordDate { get; set; }
 
-    }
+        }
 
 }

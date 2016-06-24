@@ -66,6 +66,7 @@ namespace WebApplication4.Controllers
             var food = _context.Food.Single(m => m.Id == viewModel.foodId);
             var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
 
+          //viewModel.calculator.Meal = viewModel.calculator.Meal;
             viewModel.calculator.FoodName = food.Name;
             viewModel.calculator.Grams = 100* viewModel.calculator.FoodQuantity;
             viewModel.calculator.Lipid = (int) food.Lipid_Tot_g * viewModel.calculator.FoodQuantity;

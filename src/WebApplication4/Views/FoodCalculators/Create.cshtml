@@ -12,21 +12,41 @@
         <h4>FoodCalculator</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+      
         <div class="form-group">
-            <!--<div class="col-md-10">
-                <input asp-for="FoodName" class="form-control" />
-                <span asp-validation-for="FoodName" class="text-danger" />
-            </div>-->
-            <label asp-for="calculator.FoodName" class="col-md-2 control-label"></label>
+            <label asp-for="calculator.Meal" class="col-md-2 control-label"></label>
             <div style="color:black" class="col-md-10">
-                @Html.DropDownListFor(m => Model.foodId, Model.selectList);
+             @Html.DropDownList("MealCombobox", new List<SelectListItem>
+                {
+                    new SelectListItem{ Text="Breakfast", Value = "1" },
+                    new SelectListItem{ Text="Lunch", Value = "2" },
+                    new SelectListItem{ Text="Dinner", Value = "3" },
+                 }) 
             </div>
         </div>
+
+        <!--<div class="col-md-10">
+            <input asp-for="FoodName" class="form-control" />
+            <span asp-validation-for="FoodName" class="text-danger" />
+        </div>-->
+        <div class="form-group">
+                <label asp-for="calculator.FoodName" class="col-md-2 control-label"></label>
+                <div style="color:black" class="col-md-10">
+                    @Html.DropDownListFor(m => Model.foodId, Model.selectList)
+                </div>
+        </div>
+        
         <div class="form-group">
             <label asp-for="calculator.FoodQuantity" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="calculator.FoodQuantity" class="form-control" /><span>100 grams</span>
+            <div class="col-md-10"> 
+                <input asp-for="calculator.FoodQuantity" class="form-control" /><span>Grams</span>
                 <span asp-validation-for="calculator.FoodQuantity" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add More</button>
             </div>
         </div>
         <!--
@@ -54,7 +74,9 @@
             -->
         <div class="form-group"> 
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <!-- <input type="submit" value="Create" class="btn btn-default" /> -->
+                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span>Create</button>
+
             </div>
         </div>
     </div>
