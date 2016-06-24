@@ -74,6 +74,7 @@ namespace WebApplication4.Controllers
 
             var ruleCalories = (viewModel.calculator.FoodQuantity * (int)food.Energy_kcal) / 100;
             var ruleLipids = (viewModel.calculator.FoodQuantity * (int)food.Lipid_Tot_g) / 100;
+            //se dejo el tipo de dato inicial
 
             viewModel.calculator.Calories = ruleCalories;
             viewModel.calculator.Lipid = ruleLipids;
