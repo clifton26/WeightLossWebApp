@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using WebApplication4.Models;
 using Microsoft.AspNet.Identity;
-
+using WebApplication4.ViewModels;
 
 namespace WebApplication4.Controllers
 {
@@ -24,8 +24,12 @@ namespace WebApplication4.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
-                var lista = _context.FoodCalculator.Where(r => r.OwnerId.Equals(user.Id)).ToList();
-                return View(lista);
+
+                HomeViewModel viewModel = new HomeViewModel();
+
+                viewModel.physicalRecords = _context.PhysicalInfoRecord.Where(r => r.OwnerId.Equals(user.Id)).ToList();
+
+                return View(viewModel);
 
             }else
             {

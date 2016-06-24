@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApplication4.Models.FoodCalculator>
+﻿@model WebApplication4.ViewModels.HomeViewModel
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,41 +22,36 @@
             physical exercise, etc. The results achieved through a period of time.
         </h4>    
         
-        @if (User.Identity.IsAuthenticated) {
-        <table class="table table-bordered" style="background-color:#F8F8F8">
-            <thead style="color:black">
-                <tr>
-                    <th>Food Name</th>
-                    <th>Food quantity</th>
-                    <th>Grams</th>
-                    <th>Calories</th>
-                    <th>Lipids</th>
-                </tr>
-            </thead>
-            <tbody style="color:black">
-                @foreach (var regist in Model)
-                {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => regist.FoodName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => regist.FoodQuantity)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => regist.Grams)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => regist.Calories)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => regist.Lipid)
-                        </td>
-                    </tr>
-                 }
-            </tbody>
-        </table>
-        }
+        <div class="table-responsive ">
+            @if (User.Identity.IsAuthenticated)
+            {
+                <table class="table" style="background-color:#F8F8F8">
+                    <thead style="color:black">
+                        <tr>
+                            <th>Date</th>
+                            <th>Weight</th>
+                            <th>IMC</th>
+                        </tr>
+                    </thead>
+                    <tbody style="color:black">
+                        @foreach (var regist in Model.physicalRecords)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.recordDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.weight) Kg
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.imc)
+                                </td>
+                            </tr>
+                         }
+                    </tbody>
+                </table>
+            }
+        </div>
     </div>
 </body>
 </html>

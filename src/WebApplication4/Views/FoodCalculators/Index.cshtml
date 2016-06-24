@@ -9,48 +9,45 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Calories)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FoodName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FoodQuantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Grams)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Lipid)
-        </th>
-        <th></th>
-    </tr>
-    
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Calories)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FoodName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FoodQuantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grams)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Lipid)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>
-    </tr>
-}
-</table>
+<div class="table-responsive">
+    @if (User.Identity.IsAuthenticated)
+            {
+        <table class="table" style="background-color:#F8F8F8">
+            <thead style="color:black">
+                <tr>
+                    <th>Food Name</th>
+                    <th>Food quantity</th>
+                    <th>Grams</th>
+                    <th>Calories</th>
+                    <th>Lipids</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody style="color:black">
+                @foreach (var regist in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => regist.FoodName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => regist.FoodQuantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => regist.Grams)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => regist.Calories)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => regist.Lipid)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => regist.recordDate)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

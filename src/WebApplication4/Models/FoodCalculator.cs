@@ -29,6 +29,11 @@ namespace WebApplication4.Models
         public int Calories { get; set; }
 
         public int Lipid { get; set; }
-        
+
+        [Required]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        public DateTime recordDate { get; set; }
+
     }
+
 }

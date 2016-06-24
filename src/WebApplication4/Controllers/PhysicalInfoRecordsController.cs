@@ -18,8 +18,9 @@ namespace WebApplication4.Controllers
         // GET: PhysicalInfoRecords
         public IActionResult Index()
         {
-            var applicationDbContext = _context.PhysicalInfoRecord.Include(p => p.Owner);
-            return View(applicationDbContext.ToList());
+            var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
+            var records = _context.PhysicalInfoRecord.Where(p => p.OwnerId.Equals(user.Id)).ToList();
+            return View(records);
         }
 
         // GET: PhysicalInfoRecords/Details/5
