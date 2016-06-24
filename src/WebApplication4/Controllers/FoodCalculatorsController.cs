@@ -66,6 +66,8 @@ namespace WebApplication4.Controllers
             var food = _context.Food.Single(m => m.Id == viewModel.foodId);
             var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
 
+            
+
           //viewModel.calculator.Meal = viewModel.calculator.Meal;
             viewModel.calculator.FoodName = food.Name;
             // # 3 Rule to obtain the calories by user quantity
@@ -79,6 +81,12 @@ namespace WebApplication4.Controllers
 
             viewModel.calculator.Calories = ruleCalories;
             viewModel.calculator.Lipid = ruleLipids;
+
+            // string strDDLValue = Request.Form["MealCombobox"].ToString();
+            string mealName= Request.Form["MealName"];
+            viewModel.calculator.Meal = mealName;
+
+
 
             viewModel.calculator.Owner = user;
 

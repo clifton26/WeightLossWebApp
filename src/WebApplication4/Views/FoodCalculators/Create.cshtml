@@ -16,12 +16,12 @@
         <div class="form-group">
             <label asp-for="calculator.Meal" class="col-md-2 control-label"></label>
             <div style="color:black" class="col-md-10">
-             @Html.DropDownList("MealCombobox", new List<SelectListItem>
-                {
-                    new SelectListItem{ Text="Breakfast", Value = "1" },
-                    new SelectListItem{ Text="Lunch", Value = "2" },
-                    new SelectListItem{ Text="Dinner", Value = "3" },
-                 }) 
+                <select id="mealList" name="Meal" onchange="SetSelectedText(this)">
+                    <option value="1">Breakfast</option>
+                    <option value="2">Lunch</option>
+                    <option value="3">Dinner</option>
+                </select>
+                <input type="hidden" id="hfMealName" name="MealName" />
             </div>
         </div>
 
@@ -75,8 +75,7 @@
         <div class="form-group"> 
             <div class="col-md-offset-2 col-md-10">
                 <!-- <input type="submit" value="Create" class="btn btn-default" /> -->
-                <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span>Create</button>
-
+                <button type="submit" value="Create" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Create</button>
             </div>
         </div>
     </div>
@@ -90,4 +89,11 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script type="text/javascript">
+        function SetSelectedText(mealList) {
+        var selectedText = mealList.options[mealList.selectedIndex].innerHTML;
+        document.getElementById("hfMealName").value = selectedText;
+        }
+    </script>
 }
