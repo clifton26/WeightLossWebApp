@@ -52,14 +52,12 @@ namespace WebApplication4.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(PhysicalInfoRecord physicalInfoRecord)
         {
-            if (ModelState.IsValid)
-            {
-                _context.PhysicalInfoRecord.Add(physicalInfoRecord);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewData["OwnerId"] = new SelectList(_context.Users, "Id", "Owner", physicalInfoRecord.OwnerId);
-            return View(physicalInfoRecord);
+            var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
+
+
+            _context.PhysicalInfoRecord.Add(physicalInfoRecord);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Manage");
         }
 
         // GET: PhysicalInfoRecords/Edit/5

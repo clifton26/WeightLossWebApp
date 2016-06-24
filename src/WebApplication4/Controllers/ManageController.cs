@@ -212,6 +212,8 @@ namespace WebApplication4.Controllers
             return View();
         }
 
+        //
+        // GET: /Manage/ChangeInfo
         [HttpGet]
         public IActionResult ChangeInfo()
         {
@@ -245,6 +247,8 @@ namespace WebApplication4.Controllers
             return RedirectToAction(nameof(Index), new { Message = ManageMessageId.Error });
         }
 
+        //
+        // GET: /Manage/ChangeInfo
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangeInfo(ChangeInfoViewModel model, PhysicalInfoRecord viewModel)
