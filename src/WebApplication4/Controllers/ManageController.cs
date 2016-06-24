@@ -54,7 +54,7 @@ namespace WebApplication4.Controllers
 
             var user = await GetCurrentUserAsync();
            
-            PhysicalInfoRecord physicalInfo = db.PhysicalInfoRecord.Single(record => record.OwnerId.Equals(user.Id));
+            PhysicalInfoRecord physicalInfo = db.PhysicalInfoRecord.LastOrDefault(record => record.OwnerId.Equals(user.Id));
 
             var model = new IndexViewModel
             {
@@ -248,7 +248,7 @@ namespace WebApplication4.Controllers
         }
 
         //
-        // GET: /Manage/ChangeInfo
+        /* POST: /Manage/ChangeInfo
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ChangeInfo(ChangeInfoViewModel model, PhysicalInfoRecord viewModel)
@@ -264,7 +264,7 @@ namespace WebApplication4.Controllers
             db.SaveChanges();
 
             return RedirectToAction("Index", "Manage");
-        }
+        }*/
 
         //
         // GET: /Manage/SetPassword

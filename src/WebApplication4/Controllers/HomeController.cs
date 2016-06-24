@@ -28,7 +28,7 @@ namespace WebApplication4.Controllers
                 HomeViewModel viewModel = new HomeViewModel();
                 viewModel.user = user;
                 viewModel.physicalRecords = _context.PhysicalInfoRecord.Where(r => r.OwnerId.Equals(user.Id)).ToList();
-                viewModel.foodRecords = _context.FoodCalculator.Where(r => r.OwnerId.Equals(user.Id) && r.recordDate.Equals(DateTime.Now.Date)).ToList();
+                viewModel.foodRecords = _context.FoodCalculator.Where(r => r.OwnerId.Equals(user.Id) && r.recordDate.Date.Equals(DateTime.Now.Date)).ToList();
                 System.Diagnostics.Debug.Write("Now:" + DateTime.Now.Date);
                 return View(viewModel);
 

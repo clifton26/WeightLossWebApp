@@ -3,6 +3,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using WebApplication4.Models;
+using System;
 
 namespace WebApplication4.Controllers
 {
@@ -54,6 +55,13 @@ namespace WebApplication4.Controllers
         {
             var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
 
+            physicalInfoRecord.imc = physicalInfoRecord.weight / (physicalInfoRecord.height / 100 * physicalInfoRecord.height / 100);
+
+            physicalInfoRecord.height = physicalInfoRecord.height / 100;
+
+            physicalInfoRecord.recordDate = DateTime.Now;
+
+            physicalInfoRecord.OwnerId = user.Id;
 
             _context.PhysicalInfoRecord.Add(physicalInfoRecord);
             _context.SaveChanges();
