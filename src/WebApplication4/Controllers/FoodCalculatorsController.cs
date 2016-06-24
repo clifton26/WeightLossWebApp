@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity;
 using WebApplication4.Models;
 using System.Collections.Generic;
 using WebApplication4.ViewModels;
-using System;
+
 
 namespace WebApplication4.Controllers
 {
@@ -72,8 +72,8 @@ namespace WebApplication4.Controllers
             //viewModel.calculator.Lipid = (int) food.Lipid_Tot_g * viewModel.calculator.FoodQuantity;
             //viewModel.calculator.Calories = (int) food.Energy_kcal * viewModel.calculator.FoodQuantity;
 
-            float ruleCalories = (viewModel.calculator.FoodQuantity * food.Energy_kcal) / 100;
-            float ruleLipids = (viewModel.calculator.FoodQuantity * food.Lipid_Tot_g) / 100;
+            var ruleCalories = (viewModel.calculator.FoodQuantity * (int)food.Energy_kcal) / 100;
+            var ruleLipids = (viewModel.calculator.FoodQuantity * (int)food.Lipid_Tot_g) / 100;
 
             viewModel.calculator.Calories = ruleCalories;
             viewModel.calculator.Lipid = ruleLipids;
