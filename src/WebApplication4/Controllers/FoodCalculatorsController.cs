@@ -68,9 +68,18 @@ namespace WebApplication4.Controllers
 
           //viewModel.calculator.Meal = viewModel.calculator.Meal;
             viewModel.calculator.FoodName = food.Name;
+            // # 3 Rule to obtain the calories by user quantity
             viewModel.calculator.Grams = 100* viewModel.calculator.FoodQuantity;
-            viewModel.calculator.Lipid = (int) food.Lipid_Tot_g * viewModel.calculator.FoodQuantity;
-            viewModel.calculator.Calories = (int) food.Energy_kcal * viewModel.calculator.FoodQuantity;
+            //viewModel.calculator.Lipid = (int) food.Lipid_Tot_g * viewModel.calculator.FoodQuantity;
+            //viewModel.calculator.Calories = (int) food.Energy_kcal * viewModel.calculator.FoodQuantity;
+
+            var ruleCalories = (viewModel.calculator.FoodQuantity * (int)food.Energy_kcal) / 100;
+            var ruleLipids = (viewModel.calculator.FoodQuantity * (int)food.Lipid_Tot_g) / 100;
+            //se dejo el tipo de dato inicial
+
+            viewModel.calculator.Calories = ruleCalories;
+            viewModel.calculator.Lipid = ruleLipids;
+
             viewModel.calculator.Owner = user;
 
             _context.FoodCalculator.Add(viewModel.calculator);

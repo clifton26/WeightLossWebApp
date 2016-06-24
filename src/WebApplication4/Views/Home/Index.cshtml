@@ -2,29 +2,127 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WeightLoss Helper!</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>WeightLoss Helper!</title>
 
-</head>
-<body>
-    <div class="top-content">
-        <h1>Weight Loss Helper 2.0 </h1>
+    </head>
+    <body>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <div>
+                <h1>Weight Loss Helper 2.0 </h1>
 
-        <h1>User Profile Metrics</h1>
-        <!-- Insertar datos de la tabla de FoodController-->
-                
-        <!-- Insertar datos de la tabla de FoodController-->
-        <h4 id="content">
-            This Application  would help the users to lose weight by keeping a diary of their weight, ingested calories,
-            physical exercise, etc. The results achieved through a period of time.
-        </h4>    
+                <h1>User Profile Metrics</h1>
+                <!-- Insertar datos de la tabla de FoodController-->
+                <!-- Insertar datos de la tabla de FoodController-->
+                <h4 id="content">
+                    This Application  would help the users to lose weight by keeping a diary of their weight, ingested calories,
+                    physical exercise, etc. The results achieved through a period of time.
+                </h4>
         
-        <div class="table-responsive ">
-            @if (User.Identity.IsAuthenticated)
-            {
+            </div>
+        }
+        else
+        {
+            <div class="top-left col-md-4">
+
+                <h3>Personal Info </h3>
+                <table class="table" style="background-color:#F8F8F8">
+                    <tbody style="color:black">
+                        <tr>
+                            <td>
+                                Name: @Model.user.name
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Sex: @Model.user.sex
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Age: @Model.user.age
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div  class="top-left table-responsive col-md-8">
+                <h3>Physical Info History (Last 3 days) </h3>
+                <table class="table" style="background-color:#F8F8F8">
+                    <thead style="color:black">
+                        <tr>
+                            <th>Height</th>
+                            <th>Weight</th>
+                            <th>IMC</th>
+                            <th>Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody style="color:black">
+                        @foreach (var regist in Model.physicalRecords)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.height) m
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.weight) Kg
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.imc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.recordDate)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="top-left table-responsive col-md-12">
+                <h3>Food Record History (Today)</h3>
+                <table class="table" style="background-color:#F8F8F8">
+                    <thead style="color:black">
+                        <tr>
+                            <th>Food</th>
+                            <th>Quantity (gr)</th> 
+                            <th>Lipids</th>
+                            <th>Caloiries</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody style="color:black">
+                        @foreach (var regist in Model.foodRecords)
+                        {
+                            <tr>
+                                
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.FoodName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.Grams) 
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.Lipid)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.Calories)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => regist.recordDate)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="top-left table-responsive col-md-12">
+                <h3>Calories And Lipids History (Last 3 days)</h3>
                 <table class="table" style="background-color:#F8F8F8">
                     <thead style="color:black">
                         <tr>
@@ -47,11 +145,10 @@
                                     @Html.DisplayFor(modelItem => regist.imc)
                                 </td>
                             </tr>
-                         }
+                        }
                     </tbody>
                 </table>
-            }
-        </div>
-    </div>
-</body>
+            </div>
+        }
+    </body>
 </html>

@@ -3,6 +3,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using WebApplication4.Models;
+using System;
 
 namespace WebApplication4.Controllers
 {
@@ -52,14 +53,19 @@ namespace WebApplication4.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(PhysicalInfoRecord physicalInfoRecord)
         {
-            if (ModelState.IsValid)
-            {
-                _context.PhysicalInfoRecord.Add(physicalInfoRecord);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewData["OwnerId"] = new SelectList(_context.Users, "Id", "Owner", physicalInfoRecord.OwnerId);
-            return View(physicalInfoRecord);
+            var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
+
+            physicalInfoRecord.imc = physicalInfoRecord.weight / (physicalInfoRecord.height / 100 * physicalInfoRecord.height / 100);
+
+            physicalInfoRecord.height = physicalInfoRecord.height / 100;
+
+            physicalInfoRecord.recordDate = DateTime.Now;
+
+            physicalInfoRecord.OwnerId = user.Id;
+
+            _context.PhysicalInfoRecord.Add(physicalInfoRecord);
+            _context.SaveChanges();
+            return RedirectToAction("Index", "Manage");
         }
 
         // GET: PhysicalInfoRecords/Edit/5
