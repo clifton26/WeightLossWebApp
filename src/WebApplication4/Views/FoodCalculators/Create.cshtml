@@ -13,31 +13,34 @@
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
       
-        <div id="FoodsbyUser">
-            <div class="form-group">
-                <label asp-for="calculator.Meal" class="col-md-2 control-label"></label>
-                <div style="color:black" class="col-md-10">
-                    <select id="mealList" name="Meal" onchange="SetSelectedText(this)">
-                        <option value="1">Breakfast</option>
-                        <option value="2">Lunch</option>
-                        <option value="3">Dinner</option>
-                    </select>
-                    <input type="hidden" id="hfMealName" name="MealName" />
-                </div>
+        <div class="form-group">
+            <label asp-for="calculator.Meal" class="col-md-2 control-label"></label>
+            <div style="color:black" class="col-md-10">
+                <select id="mealList" name="Meal" onchange="SetSelectedText(this)">
+                    <option value="" disabled selected>Choose option</option>
+                    <option value="1">Breakfast</option>
+                    <option value="2">Lunch</option>
+                    <option value="3">Dinner</option>
+                </select>
+                <input type="hidden" id="hfMealName" name="MealName" />
             </div>
+        </div>
 
-            <!--<div class="col-md-10">
+        <!--<div class="col-md-10">
             <input asp-for="FoodName" class="form-control" />
             <span asp-validation-for="FoodName" class="text-danger" />
         </div>-->
-            <div class="form-group">                
-                    <label asp-for="calculator.FoodName" class="col-md-2 control-label"></label>                                
-                    
-                     <div style="color:black" class="col-md-10">
-                        
-                          @Html.DropDownListFor(m => Model.foodId, Model.selectList)
-                     </div>
-                       
+        <div id="listaComida">
+            <div class="form-group">
+                <label asp-for="calculator.FoodName" class="col-md-2 control-label"></label>
+                <!-- <div style="color:black" class="col-md-10">
+                     @Html.DropDownListFor(m => Model.foodId, Model.selectList)
+                </div>  -->
+
+                <div class="col-md-10">
+                    <input id="SearchString" type="text" class="span12 form-control" placeholder="Search Food Name" autocomplete="off" />
+                    @Html.Hidden("IdComida")
+                </div>
             </div>
 
             <div class="form-group">
@@ -49,11 +52,19 @@
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add More</button>
-                </div>
-            </div>
+              <div class="col-md-offset-2 col-md-10">
+                  <a class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add</a>
+              </div>
+            </div> 
+            
+
         </div>
+
+      <!-- <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> Add More</a>
+            </div>
+        </div> --> 
         <!--
         <div class="form-group">
             <label asp-for="calculator.Calories" class="col-md-2 control-label"></label>
@@ -77,6 +88,43 @@
             </div>
         </div>
             -->
+
+        <div class="top-right table-responsive col-md-8">
+            <h3>Food Calculator</h3>
+            <table class="table" style="background-color:#F8F8F8">
+                <thead style="color:black">
+                    <tr>
+                        <th>Food</th>
+                        <th>Quantity (gr)</th>
+                        <th>Lipids</th>
+                        <th>Caloiries</th>
+                    </tr>
+                </thead>
+                <tbody style="color:black">
+                        <tr>
+
+                            <td>
+                                
+                            </td>
+                            <td>
+                               
+                            </td>
+                            <td>
+                                
+                            </td>
+                            <td>
+                                
+                            </td>
+                            <td>
+                               
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
         <div class="form-group"> 
             <div class="col-md-offset-2 col-md-10">
                 <!-- <input type="submit" value="Create" class="btn btn-default" /> -->
@@ -97,13 +145,43 @@
     <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
+
     <script type="text/javascript">
         function SetSelectedText(mealList) {
         var selectedText = mealList.options[mealList.selectedIndex].innerHTML;
         document.getElementById("hfMealName").value = selectedText;
         }
 
-       
-        
+        $(function () {
+            $('#SearchString').autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: "/FoodCalculators/GetFoodName",
+                        type: "POST",
+                        dataType: "json",
+                        data: { searchstring: request.term },
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return { label: item.Name, value: item.Id };
+                            }))
+                        }
+                    })
+                },
+                select: function (event, ui) {
+                    $("#SearchString").val(ui.item.label);
+                    $("#IdComida").val(ui.item.value);
+
+                    return false;
+                },
+                focus: function (event, ui) {
+                    $("#SearchString").val(ui.item.label);
+                    $("#IdComida").val(ui.item.value);
+                    event.preventDefault(); // Prevent the default focus behavior.
+                },
+                messages: {
+                    noResults: '', results: function (resultsCount) { }
+                }
+            });
+        });
     </script>
 }
