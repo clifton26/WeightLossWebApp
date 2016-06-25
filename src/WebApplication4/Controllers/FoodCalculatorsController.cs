@@ -5,7 +5,6 @@ using Microsoft.AspNet.Identity;
 using WebApplication4.Models;
 using System.Collections.Generic;
 using WebApplication4.ViewModels;
-using Microsoft.AspNet.Http.Internal;
 using Microsoft.AspNet.Http;
 
 namespace WebApplication4.Controllers
@@ -55,8 +54,12 @@ namespace WebApplication4.Controllers
                 Text = f.Name,
                 Value = f.Id.ToString()
             };
+            
 
             return View(viewModel);
+
+            
+
         }
 
         // POST: FoodCalculators/Create
@@ -77,7 +80,7 @@ namespace WebApplication4.Controllers
           //viewModel.calculator.Meal = viewModel.calculator.Meal;
             viewModel.calculator.FoodName = food.Name;
             // # 3 Rule to obtain the calories by user quantity
-            viewModel.calculator.Grams = 100* viewModel.calculator.FoodQuantity;
+            viewModel.calculator.Grams = 100 * viewModel.calculator.FoodQuantity;
             //viewModel.calculator.Lipid = (int) food.Lipid_Tot_g * viewModel.calculator.FoodQuantity;
             //viewModel.calculator.Calories = (int) food.Energy_kcal * viewModel.calculator.FoodQuantity;
 
@@ -89,7 +92,7 @@ namespace WebApplication4.Controllers
             viewModel.calculator.Lipid = ruleLipids;
 
             // string strDDLValue = Request.Form["MealCombobox"].ToString();
-            string mealName= Request.Form["MealName"];
+            string mealName = Request.Form["MealName"];
             viewModel.calculator.Meal = mealName;
 
             viewModel.calculator.Owner = user;
@@ -167,4 +170,5 @@ namespace WebApplication4.Controllers
           return Json(suggestions);            
          }
     }
+        
 }
