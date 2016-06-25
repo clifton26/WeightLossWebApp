@@ -5,7 +5,8 @@ using Microsoft.AspNet.Identity;
 using WebApplication4.Models;
 using System.Collections.Generic;
 using WebApplication4.ViewModels;
-
+using Microsoft.AspNet.Http.Internal;
+using Microsoft.AspNet.Http;
 
 namespace WebApplication4.Controllers
 {
@@ -61,9 +62,14 @@ namespace WebApplication4.Controllers
         // POST: FoodCalculators/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(FoodsCalculator viewModel)
+        public IActionResult Create(FoodsCalculator viewModel, IFormCollection campos)
         {
-            var food = _context.Food.Single(m => m.Id == viewModel.foodId);
+            Food food = new Food();
+            if (!string.IsNullOrEmpty(campos["IdComida"]))
+            {
+                food = _context.Food.Single(m => m.Id == int.Parse(campos["IdComida"]));
+            }
+            
             var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
 
             
@@ -85,8 +91,6 @@ namespace WebApplication4.Controllers
             // string strDDLValue = Request.Form["MealCombobox"].ToString();
             string mealName= Request.Form["MealName"];
             viewModel.calculator.Meal = mealName;
-
-
 
             viewModel.calculator.Owner = user;
 
@@ -155,5 +159,12 @@ namespace WebApplication4.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public JsonResult GetFoodName (string searchstring)
+        {
+          var suggestions = _context.Food.Where(i => i.Name.ToUpper().Contains(searchstring.ToUpper())).ToList().Select(j => new { Id = j.Id, Name = j.Name});
+          return Json(suggestions);            
+         }
     }
 }
