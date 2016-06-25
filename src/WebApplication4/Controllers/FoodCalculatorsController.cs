@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity;
 using WebApplication4.Models;
 using System.Collections.Generic;
 using WebApplication4.ViewModels;
-
+using System.Data.SqlClient;
 
 namespace WebApplication4.Controllers
 {
@@ -45,17 +45,23 @@ namespace WebApplication4.Controllers
         public IActionResult Create()
         {
             FoodsCalculator viewModel = new FoodsCalculator();
-
+/*
             List<Food> foods = _context.Food.ToList();
-            viewModel.selectList = 
+            viewModel.selectList =
                 from f in foods
-            select new SelectListItem
-            {
-                Text = f.Name,
-                Value = f.Id.ToString()
-            };
+                select new SelectListItem
+                {
+                    Text = f.Name,
+                    Value = f.Id.ToString()
+                };
+ */
+
+            
 
             return View(viewModel);
+
+            
+
         }
 
         // POST: FoodCalculators/Create
@@ -66,12 +72,12 @@ namespace WebApplication4.Controllers
             var food = _context.Food.Single(m => m.Id == viewModel.foodId);
             var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
 
-            
 
-          //viewModel.calculator.Meal = viewModel.calculator.Meal;
+
+            //viewModel.calculator.Meal = viewModel.calculator.Meal;
             viewModel.calculator.FoodName = food.Name;
             // # 3 Rule to obtain the calories by user quantity
-            viewModel.calculator.Grams = 100* viewModel.calculator.FoodQuantity;
+            viewModel.calculator.Grams = 100 * viewModel.calculator.FoodQuantity;
             //viewModel.calculator.Lipid = (int) food.Lipid_Tot_g * viewModel.calculator.FoodQuantity;
             //viewModel.calculator.Calories = (int) food.Energy_kcal * viewModel.calculator.FoodQuantity;
 
@@ -83,7 +89,7 @@ namespace WebApplication4.Controllers
             viewModel.calculator.Lipid = ruleLipids;
 
             // string strDDLValue = Request.Form["MealCombobox"].ToString();
-            string mealName= Request.Form["MealName"];
+            string mealName = Request.Form["MealName"];
             viewModel.calculator.Meal = mealName;
 
 
@@ -156,4 +162,5 @@ namespace WebApplication4.Controllers
             return RedirectToAction("Index");
         }
     }
+        
 }
