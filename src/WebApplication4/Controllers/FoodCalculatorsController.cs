@@ -73,8 +73,6 @@ namespace WebApplication4.Controllers
             var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
 
             
-
-          //viewModel.calculator.Meal = viewModel.calculator.Meal;
             viewModel.calculator.FoodName = food.Name;
             // # 3 Rule to obtain the calories by user quantity
             viewModel.calculator.Grams = 100* viewModel.calculator.FoodQuantity;
@@ -88,7 +86,7 @@ namespace WebApplication4.Controllers
             viewModel.calculator.Calories = ruleCalories;
             viewModel.calculator.Lipid = ruleLipids;
 
-            // string strDDLValue = Request.Form["MealCombobox"].ToString();
+
             string mealName= Request.Form["MealName"];
             //viewModel.calculator.Meal = mealName;
            
@@ -163,7 +161,7 @@ namespace WebApplication4.Controllers
         [HttpPost]
         public JsonResult GetFoodName (string searchstring)
         {
-          var suggestions = _context.Food.Where(i => i.Name.ToUpper().Contains(searchstring.ToUpper())).ToList().Select(j => new { Id = j.Id, Name = j.Name});
+          var suggestions = _context.Food.Where(i => i.Name.ToUpper().Contains(searchstring.ToUpper())).ToList().Select(j => new { Id = j.Id, Name = j.Name, Lipidos = j.Lipid_Tot_g,  Calorias = j.Energy_kcal});
           return Json(suggestions);            
         }
     }
