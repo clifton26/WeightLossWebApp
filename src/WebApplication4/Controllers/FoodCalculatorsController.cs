@@ -5,15 +5,13 @@ using Microsoft.AspNet.Identity;
 using WebApplication4.Models;
 using System.Collections.Generic;
 using WebApplication4.ViewModels;
+using Microsoft.AspNet.Http.Internal;
 using Microsoft.AspNet.Http;
-
 
 namespace WebApplication4.Controllers
 {
     public class FoodCalculatorsController : Controller
     {
-
-        
         private ApplicationDbContext _context;
 
         public FoodCalculatorsController(ApplicationDbContext context)
@@ -41,7 +39,6 @@ namespace WebApplication4.Controllers
                 return HttpNotFound();
             }
 
-            
             return View(foodCalculator);
         }
 
@@ -58,12 +55,8 @@ namespace WebApplication4.Controllers
                 Text = f.Name,
                 Value = f.Id.ToString()
             };
-            
 
             return View(viewModel);
-
-            
-
         }
 
         // POST: FoodCalculators/Create
@@ -75,39 +68,26 @@ namespace WebApplication4.Controllers
             if (!string.IsNullOrEmpty(campos["IdComida"]))
             {
                 food = _context.Food.Single(m => m.Id == int.Parse(campos["IdComida"]));
-                
             }
-            if (!string.IsNullOrEmpty(campos["calories"]))
-            {
-                food = _context.Food.Single(m => m.Id == int.Parse(campos["calories"]));
-
-            }
-
-
-
+            
             var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
 
             
-
-          //viewModel.calculator.Meal = viewModel.calculator.Meal;
             viewModel.calculator.FoodName = food.Name;
             // # 3 Rule to obtain the calories by user quantity
-            viewModel.calculator.Grams = 100 * viewModel.calculator.FoodQuantity;
+            viewModel.calculator.Grams = 100* viewModel.calculator.FoodQuantity;
             //viewModel.calculator.Lipid = (int) food.Lipid_Tot_g * viewModel.calculator.FoodQuantity;
             //viewModel.calculator.Calories = (int) food.Energy_kcal * viewModel.calculator.FoodQuantity;
 
-            //se dejo el tipo de dato inicial
             var ruleCalories = (viewModel.calculator.FoodQuantity * (int)food.Energy_kcal) / 100;
-            var ruleLipids = (viewModel.calculator.FoodQuantity * (int)food.Lipid_Tot_g) / 100; 
-            var recorDate = System.DateTime.Now;
-                        
+            var ruleLipids = (viewModel.calculator.FoodQuantity * (int)food.Lipid_Tot_g) / 100;
+            //se dejo el tipo de dato inicial
 
             viewModel.calculator.Calories = ruleCalories;
             viewModel.calculator.Lipid = ruleLipids;
-            viewModel.calculator.recordDate = recorDate;
 
-            // string strDDLValue = Request.Form["MealCombobox"].ToString();
-            string mealName = Request.Form["MealName"];
+
+            string mealName= Request.Form["MealName"];
             viewModel.calculator.Meal = mealName;
 
             viewModel.calculator.Owner = user;
@@ -115,9 +95,7 @@ namespace WebApplication4.Controllers
             _context.FoodCalculator.Add(viewModel.calculator);
             _context.SaveChanges();
 
-            
             return RedirectToAction("Index", "Home");
-            //return View(viewModel);
 
         }
 
@@ -183,9 +161,8 @@ namespace WebApplication4.Controllers
         [HttpPost]
         public JsonResult GetFoodName (string searchstring)
         {
-          var suggestions = _context.Food.Where(i => i.Name.ToUpper().Contains(searchstring.ToUpper())).ToList().Select(j => new { Id = j.Id, Name = j.Name});
+          var suggestions = _context.Food.Where(i => i.Name.ToUpper().Contains(searchstring.ToUpper())).ToList().Select(j => new { Id = j.Id, Name = j.Name, Lipidos = j.Lipid_Tot_g,  Calorias = j.Energy_kcal});
           return Json(suggestions);            
         }
     }
-        
 }

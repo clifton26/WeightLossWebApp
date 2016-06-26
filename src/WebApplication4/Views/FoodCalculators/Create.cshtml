@@ -40,11 +40,10 @@
                 <div class="col-md-10">
                     <input id="SearchString" type="text" class="span12 form-control" placeholder="Search Food Name" autocomplete="off" />
                     @Html.Hidden("IdComida")
-                    @Html.Hidden("calories")
-                    @Html.Hidden("lipds")
-                </div>
-            
+                    @Html.Hidden("Lipidos")
+                    @Html.Hidden("Calorias")
 
+                </div>
             </div>
 
             <div class="form-group">
@@ -57,7 +56,7 @@
 
             <div class="form-group">
               <div class="col-md-offset-2 col-md-10">
-                  <a class="btn btn-success" id="addFood" ><span class="glyphicon glyphicon-plus"></span> Add</a>
+                  <a class="btn btn-success" id="addFood"><span class="glyphicon glyphicon-plus"></span> Add</a>
               </div>
             </div> 
             
@@ -93,7 +92,7 @@
         </div>
             -->
 
-        <div class="top-right table-responsive col-md-8">
+        <div class="top-right table-responsive col-md-10">
             <h3>Food Calculator</h3>
             <table id="tbFood" class="table" style="background-color:#F8F8F8">
                 <thead style="color:black">
@@ -133,10 +132,9 @@
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
     <script type="text/javascript">
-       
         function SetSelectedText(mealList) {
-            var selectedText = mealList.options[mealList.selectedIndex].innerHTML;
-            document.getElementById("hfMealName").value = selectedText;
+        var selectedText = mealList.options[mealList.selectedIndex].innerHTML;
+        document.getElementById("hfMealName").value = selectedText;
         }
 
         $(function () {
@@ -149,13 +147,15 @@
                         data: { searchstring: request.term },
                         success: function (data) {
                             response($.map(data, function (item) {
-                                return { label: item.Name, value: item.Id, value2: item.Ash_g};
+                                return { label: item.Name, label1: item.Lipidos, label2: item.Calorias, value: item.Id, };
                             }))
                         }
                     })
                 },
                 select: function (event, ui) {
                     $("#SearchString").val(ui.item.label);
+                    $("#Lipidos").val(ui.item.label1)
+                    $("#Calorias").val(ui.item.label2)
                     $("#IdComida").val(ui.item.value);
 
                     return false;
@@ -171,21 +171,25 @@
             });
         });
 
-
         $('#addFood').click(function () {
-
             var cnt = document.getElementById("SearchString").value;
             var cnt1 = document.getElementById("idFoodQt").value;
-            var cnt2 = document.getElementById("calories").value;
-            $('#tbFoodB').append('<tr class="child"><td>' + cnt + '<\/td><td>' + cnt1 + cnt2 + '  </td></tr>');
+            var cnt2 = document.getElementById("Lipidos").value;
+            var cnt3 = document.getElementById("Calorias").value;
 
-            //Remove -> o botão .remF ainda nao existe
+            var ruleLipids = (cnt1 * cnt2 ) /100;
+            var ruleCalories = (cnt1 * cnt3) / 100; 
+       
+            $('#tbFoodB').append('<tr class="child"><td>' + cnt + '<\/td><td>' + cnt1 + ' </td><td>' + ruleLipids + '  </td><td>' + ruleCalories+ '  </td</tr>');
+            //Remove -> o botão .remF ainda nao existe 
             /*  $('#tbFood').on('click', '.remF', function () {
                 $(this).parent().parent().remove();
                 alert("1");
-
+                
             }); */
-
+                                  
         });
+
+
     </script>
 }
