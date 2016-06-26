@@ -85,11 +85,13 @@ namespace WebApplication4.Controllers
             //viewModel.calculator.Calories = (int) food.Energy_kcal * viewModel.calculator.FoodQuantity;
 
             var ruleCalories = (viewModel.calculator.FoodQuantity * (int)food.Energy_kcal) / 100;
-            var ruleLipids = (viewModel.calculator.FoodQuantity * (int)food.Lipid_Tot_g) / 100;
+            var ruleLipids = (viewModel.calculator.FoodQuantity * (int)food.Lipid_Tot_g) / 100; 
+            var recorDate = System.DateTime.Now;
             //se dejo el tipo de dato inicial
 
             viewModel.calculator.Calories = ruleCalories;
             viewModel.calculator.Lipid = ruleLipids;
+            viewModel.calculator.recordDate = recorDate;
 
             // string strDDLValue = Request.Form["MealCombobox"].ToString();
             string mealName = Request.Form["MealName"];
