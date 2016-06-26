@@ -91,7 +91,7 @@
 
         <div class="top-right table-responsive col-md-8">
             <h3>Food Calculator</h3>
-            <table class="table" style="background-color:#F8F8F8">
+            <table id ="myTable" class="table" style="background-color:#F8F8F8">
                 <thead style="color:black">
                     <tr>
                         <th>Food</th>
@@ -151,6 +151,8 @@
         var selectedText = mealList.options[mealList.selectedIndex].innerHTML;
         document.getElementById("hfMealName").value = selectedText;
         }
+
+        
 
         $(function () {
             $('#SearchString').autocomplete({

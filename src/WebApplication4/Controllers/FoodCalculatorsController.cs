@@ -7,10 +7,12 @@ using System.Collections.Generic;
 using WebApplication4.ViewModels;
 using Microsoft.AspNet.Http;
 
+
 namespace WebApplication4.Controllers
 {
     public class FoodCalculatorsController : Controller
     {
+        
         private ApplicationDbContext _context;
 
         public FoodCalculatorsController(ApplicationDbContext context)
@@ -101,6 +103,8 @@ namespace WebApplication4.Controllers
 
             _context.FoodCalculator.Add(viewModel.calculator);
             _context.SaveChanges();
+
+            
 
             return RedirectToAction("Index", "Home");
 
