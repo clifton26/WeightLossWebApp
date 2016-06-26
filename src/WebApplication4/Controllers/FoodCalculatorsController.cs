@@ -12,6 +12,7 @@ namespace WebApplication4.Controllers
 {
     public class FoodCalculatorsController : Controller
     {
+
         
         private ApplicationDbContext _context;
 
@@ -40,6 +41,7 @@ namespace WebApplication4.Controllers
                 return HttpNotFound();
             }
 
+            
             return View(foodCalculator);
         }
 
@@ -73,8 +75,16 @@ namespace WebApplication4.Controllers
             if (!string.IsNullOrEmpty(campos["IdComida"]))
             {
                 food = _context.Food.Single(m => m.Id == int.Parse(campos["IdComida"]));
+                
             }
-            
+            if (!string.IsNullOrEmpty(campos["calories"]))
+            {
+                food = _context.Food.Single(m => m.Id == int.Parse(campos["calories"]));
+
+            }
+
+
+
             var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
 
             
@@ -86,10 +96,11 @@ namespace WebApplication4.Controllers
             //viewModel.calculator.Lipid = (int) food.Lipid_Tot_g * viewModel.calculator.FoodQuantity;
             //viewModel.calculator.Calories = (int) food.Energy_kcal * viewModel.calculator.FoodQuantity;
 
+            //se dejo el tipo de dato inicial
             var ruleCalories = (viewModel.calculator.FoodQuantity * (int)food.Energy_kcal) / 100;
             var ruleLipids = (viewModel.calculator.FoodQuantity * (int)food.Lipid_Tot_g) / 100; 
             var recorDate = System.DateTime.Now;
-            //se dejo el tipo de dato inicial
+                        
 
             viewModel.calculator.Calories = ruleCalories;
             viewModel.calculator.Lipid = ruleLipids;
@@ -105,8 +116,8 @@ namespace WebApplication4.Controllers
             _context.SaveChanges();
 
             
-
             return RedirectToAction("Index", "Home");
+            //return View(viewModel);
 
         }
 
@@ -174,7 +185,7 @@ namespace WebApplication4.Controllers
         {
           var suggestions = _context.Food.Where(i => i.Name.ToUpper().Contains(searchstring.ToUpper())).ToList().Select(j => new { Id = j.Id, Name = j.Name});
           return Json(suggestions);            
-         }
+        }
     }
         
 }
