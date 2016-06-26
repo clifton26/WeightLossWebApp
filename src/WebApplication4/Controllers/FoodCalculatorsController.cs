@@ -165,6 +165,6 @@ namespace WebApplication4.Controllers
         {
           var suggestions = _context.Food.Where(i => i.Name.ToUpper().Contains(searchstring.ToUpper())).ToList().Select(j => new { Id = j.Id, Name = j.Name});
           return Json(suggestions);            
-         }
+        }
     }
 }

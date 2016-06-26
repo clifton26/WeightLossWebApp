@@ -46,7 +46,7 @@
             <div class="form-group">
                 <label asp-for="calculator.FoodQuantity" class="col-md-2 control-label"></label>
                 <div class="col-md-10">
-                    <input asp-for="calculator.FoodQuantity" class="form-control" /><span>Grams</span>
+                    <input asp-for="calculator.FoodQuantity" class="form-control" id="idFoodQt" /><span>Grams</span>
                     <span asp-validation-for="calculator.FoodQuantity" class="text-danger" />
                 </div>
             </div>
@@ -100,25 +100,8 @@
                         <th>Caloiries</th>
                     </tr>
                 </thead>
-                <tbody style="color:black">
-                        <tr>
-
-                            <td>
-                                
-                            </td>
-                            <td>
-                               
-                            </td>
-                            <td>
-                                
-                            </td>
-                            <td>
-                                
-                            </td>
-                            <td>
-                               
-                            </td>
-                        </tr>
+                <tbody style="color:black" id="tbFoodB">
+                  
                 </tbody>
             </table>
         </div>
@@ -144,7 +127,6 @@
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-
 
     <script type="text/javascript">
         function SetSelectedText(mealList) {
@@ -182,6 +164,22 @@
                     noResults: '', results: function (resultsCount) { }
                 }
             });
+        });
+
+
+        $('#addFood').click(function () {
+
+            var cnt = document.getElementById("SearchString").value;
+            var cnt1 = document.getElementById("idFoodQt").value;
+            $('#tbFoodB').append('<tr class="child"><td>' + cnt + '<\/td><td>' + cnt1 + '  </td></tr>');
+
+            //Remove -> o botão .remF ainda nao existe 
+            /*  $('#tbFood').on('click', '.remF', function () {
+                $(this).parent().parent().remove();
+                alert("1");
+                
+            }); */
+                                  
         });
     </script>
 }
