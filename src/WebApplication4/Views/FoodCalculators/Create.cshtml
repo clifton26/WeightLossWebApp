@@ -180,13 +180,12 @@
             var ruleLipids = (cnt1 * cnt2 ) /100;
             var ruleCalories = (cnt1 * cnt3) / 100; 
        
-            $('#tbFoodB').append('<tr class="child"><td>' + cnt + '<\/td><td>' + cnt1 + ' </td><td>' + ruleLipids + '  </td><td>' + ruleCalories+ '  </td</tr>');
-            //Remove -> o botão .remF ainda nao existe 
-            /*  $('#tbFood').on('click', '.remF', function () {
-                $(this).parent().parent().remove();
-                alert("1");
-                
-            }); */
+            $('#tbFoodB').append('<tr class="child"><td>' + cnt + '<\/td><td>' + cnt1 + ' </td><td>' + ruleLipids + '  </td><td>' + ruleCalories + '  </td> <td> <a href="#" class="btn btn-sm btn-danger" id="delete"><span class="glyphicon glyphicon-remove"></span> Delete</a><td> </tr>');
+
+        });
+
+        $('#tbFoodB').on('click', '#delete', function () {
+            $(this).parent().parent().remove();
                                   
         });
 
