@@ -208,8 +208,11 @@
 
         $('#tbFoodB').on('click', '#delete', function () {
             $(this).parent().parent().remove();
-            sumCalories = sumCalories + ruleCalories;
-            sumLipids = sumLipids + ruleLipids;
+            sumCalories = sumCalories - ruleCalories;
+            sumLipids = sumLipids - ruleLipids;
+
+            $('.totalLipds').text('Total: ' + sumLipids);
+            $('.totalCalories').text('Total :' + sumCalories);
 
         });
 
