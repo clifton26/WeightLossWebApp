@@ -14,7 +14,7 @@
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
       
         <div class="form-group">
-            <label asp-for="calculator.Meal" class="col-md-2 control-label"></label>
+            <label asp-for="calculator.meal" class="col-md-2 control-label"></label>
             <div style="color:black" class="col-md-10">
                 <select id="mealList" name="Meal" onchange="SetSelectedText(this)">
                     <option value="" disabled selected>Choose option</option>
@@ -141,6 +141,8 @@
 
         var sumCalories = 0;
         var sumLipids = 0;
+        var ruleCalories = 0;
+        var ruleLipids = 0;
 
         function SetSelectedText(mealList) {
         var selectedText = mealList.options[mealList.selectedIndex].innerHTML;
@@ -190,20 +192,15 @@
             var cnt2 = document.getElementById("Lipidos").value;
             var cnt3 = document.getElementById("Calorias").value;
 
-            var ruleLipids = (cnt1 * cnt2 ) /100;
-            var ruleCalories = (cnt1 * cnt3) / 100;
+            ruleLipids = (cnt1 * cnt2) / 100;
+            ruleCalories = (cnt1 * cnt3) / 100;
        
-            $('#tbFood').append('<tr class="child"><td id>' + cnt + '<\/td><td>' + cnt1 + ' </td><td>' + ruleLipids + '  </td><td>' + ruleCalories + '  </td</tr>');
-            //Remove -> o botão .remF ainda nao existe 
-            /*  $('#tbFood').on('click', '.remF', function () {
-                $(this).parent().parent().remove();
-                alert("1");
-                
-            }); */
+            $('#tbFood').append('<tr class="child"><td id>' + cnt + '<\/td><td>' + cnt1 + ' </td><td>' + ruleLipids + '  </td><td>' + ruleCalories + '  </td><td> <a href="#" class="btn btn-sm btn-danger" id="delete"><span class="glyphicon glyphicon-remove"></span> Delete</a><td></tr>');
+            
             
             sumCalories = sumCalories + ruleCalories;
             sumLipids = sumLipids + ruleLipids;
-            //alert(sumCalories);
+           
             $('.totalLipds').text('Total: '+sumLipids);
             $('.totalCalories').text('Total :'+sumCalories);
                                  
@@ -211,6 +208,8 @@
 
         $('#tbFoodB').on('click', '#delete', function () {
             $(this).parent().parent().remove();
+            sumCalories = sumCalories + ruleCalories;
+            sumLipids = sumLipids + ruleLipids;
 
         });
 
