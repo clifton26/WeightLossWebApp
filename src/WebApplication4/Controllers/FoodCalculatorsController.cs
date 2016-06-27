@@ -42,7 +42,7 @@ namespace WebApplication4.Controllers
             return View(foodCalculator);
         }
 
-        // GET: FoodCalculators/Create
+        /* GET: FoodCalculators/Create
         public IActionResult Create()
         {
             FoodsCalculator viewModel = new FoodsCalculator();
@@ -57,42 +57,39 @@ namespace WebApplication4.Controllers
             };
 
             return View(viewModel);
-        }
+        }*/
 
         // POST: FoodCalculators/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(FoodsCalculator viewModel, IFormCollection campos)
+        public IActionResult Create(FoodCalculator foodCalculator, IFormCollection campos)
         {
-            Food food = new Food();
-            if (!string.IsNullOrEmpty(campos["IdComida"]))
-            {
-                food = _context.Food.Single(m => m.Id == int.Parse(campos["IdComida"]));
-            }
             
             var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
 
-            
-            viewModel.calculator.FoodName = food.Name;
-            // # 3 Rule to obtain the calories by user quantity
-            viewModel.calculator.Grams = 100* viewModel.calculator.FoodQuantity;
-            //viewModel.calculator.Lipid = (int) food.Lipid_Tot_g * viewModel.calculator.FoodQuantity;
-            //viewModel.calculator.Calories = (int) food.Energy_kcal * viewModel.calculator.FoodQuantity;
-
-            var ruleCalories = (viewModel.calculator.FoodQuantity * (int)food.Energy_kcal) / 100;
-            var ruleLipids = (viewModel.calculator.FoodQuantity * (int)food.Lipid_Tot_g) / 100;
-            //se dejo el tipo de dato inicial
-
-            viewModel.calculator.Calories = ruleCalories;
-            viewModel.calculator.Lipid = ruleLipids;
+            var meal = _context.Meal.Last(m => m.OwnerId.Equals(user.Id));
 
 
-            string mealName= Request.Form["MealName"];
-            //viewModel.calculator.Meal = mealName;
-           
-            //viewModel.calculator.Owner = user;
+            int tableEntries = int.Parse(campos["tableCount"]);
 
-            _context.FoodCalculator.Add(viewModel.calculator);
+            for(var i = 1; i < tableEntries; i++)
+            {
+                FoodCalculator newCalculator = new FoodCalculator();
+
+                newCalculator.MealId = meal.Id;
+                newCalculator.FoodName = campos["food" + i];
+                newCalculator.FoodQuantity = int.Parse(campos["quantity" + i]);
+
+                newCalculator.Grams = int.Parse(campos["quantity" + i]);
+
+                newCalculator.Lipid = int.Parse(campos["lipids" + i]);
+
+                newCalculator.Calories = int.Parse(campos["calories" + i]);
+
+                _context.FoodCalculator.Add(newCalculator);
+
+            }
+
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Home");

@@ -28,7 +28,7 @@ namespace WebApplication4.Models
         public decimal imc { get; set; }
     
         [Required]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime recordDate { get; set; }
     }
 }

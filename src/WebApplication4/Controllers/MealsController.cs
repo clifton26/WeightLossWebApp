@@ -3,6 +3,10 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using WebApplication4.Models;
+using Microsoft.AspNet.Http;
+using WebApplication4.ViewModels;
+using System;
+using System.Collections.Generic;
 
 namespace WebApplication4.Controllers
 {
@@ -42,23 +46,69 @@ namespace WebApplication4.Controllers
         // GET: Meals/Create
         public IActionResult Create()
         {
-            ViewData["OwnerId"] = new SelectList(_context.Users, "Id", "Owner");
-            return View();
+            FoodsCalculator viewModel = new FoodsCalculator();
+
+            List<Food> foods = _context.Food.ToList();
+            viewModel.selectList =
+                from f in foods
+                select new SelectListItem
+                {
+                    Text = f.Name,
+                    Value = f.Id.ToString()
+                };
+
+            return View(viewModel);
         }
 
         // POST: Meals/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Meal meal)
+        public IActionResult Create(FoodsCalculator viewModel, IFormCollection campos)
         {
-            if (ModelState.IsValid)
+
+            var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
+
+            Meal mealToAdd = new Meal();
+
+            mealToAdd.Owner = user;
+
+            mealToAdd.MealName = campos["MealName"];
+
+            mealToAdd.recordDate = DateTime.Now;
+
+            _context.Meal.Add(mealToAdd);
+            _context.SaveChanges();
+
+            var meal = _context.Meal.Last(m => m.OwnerId.Equals(user.Id));
+
+            int tableEntries = int.Parse(campos["tableCount"]);
+
+            for (var i = 1; i <= tableEntries; i++)
             {
-                _context.Meal.Add(meal);
-                _context.SaveChanges();
-                return RedirectToAction("Index");
+                FoodCalculator newCalculator = new FoodCalculator();
+
+                newCalculator.MealId = meal.Id;
+                newCalculator.FoodName = campos["food" + i];
+
+                String quantity = campos["quantity" + i];
+                String lipids = campos["lipids" + i];
+                String calories = campos["calories" + i];
+
+                newCalculator.FoodQuantity = int.Parse(quantity.Substring(0, quantity.Length - 1));
+
+                newCalculator.Grams = 100 * int.Parse(quantity.Substring(0, quantity.Length - 1));
+
+                newCalculator.Lipid = int.Parse(lipids.Substring(0, lipids.Length - 1));
+
+                newCalculator.Calories = int.Parse(calories.Substring(0, calories.Length - 1));
+
+                _context.FoodCalculator.Add(newCalculator);
+
             }
-            ViewData["OwnerId"] = new SelectList(_context.Users, "Id", "Owner", meal.OwnerId);
-            return View(meal);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Meals/Edit/5

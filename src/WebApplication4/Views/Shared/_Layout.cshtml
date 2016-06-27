@@ -39,7 +39,7 @@
                         @if (User.Identity.IsAuthenticated)
                         {
 
-                            <li><a asp-controller="FoodCalculators" asp-action="Create">FoodCalculator</a></li>
+                            <li><a asp-controller="Meals" asp-action="Create">FoodCalculator</a></li>
                         }
                     </ul>
                     @await Html.PartialAsync("_LoginPartial")

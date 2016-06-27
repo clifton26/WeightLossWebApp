@@ -12,6 +12,7 @@ namespace WebApplication4.ViewModels
 
         public int foodId { get; set; }
         public IEnumerable<SelectListItem> selectList { get; set; }
+        public Meal meal { get; set; } 
         public FoodCalculator calculator { get; set; }
 
     }
