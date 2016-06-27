@@ -88,9 +88,9 @@ namespace WebApplication4.Controllers
 
 
             string mealName= Request.Form["MealName"];
-            viewModel.calculator.Meal = mealName;
-
-            viewModel.calculator.Owner = user;
+            //viewModel.calculator.Meal = mealName;
+           
+            //viewModel.calculator.Owner = user;
 
             _context.FoodCalculator.Add(viewModel.calculator);
             _context.SaveChanges();

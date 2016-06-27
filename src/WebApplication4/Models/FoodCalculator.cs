@@ -17,12 +17,11 @@ namespace WebApplication4.Models
         [Required]
         public String FoodName { get; set; }
 
-        public String Meal { get; set; }
+        [Required]
+        public int MealId { get; set; }
 
-        public String OwnerId { get; set; }
-    
-        [ForeignKey("OwnerId")]
-        public ApplicationUser Owner { get; set; }
+        [ForeignKey("MealId")]
+        public Meal meal { get; set; }
 
         public int FoodQuantity { get; set; }
 
@@ -32,10 +31,6 @@ namespace WebApplication4.Models
 
         public int Lipid { get; set; }
 
-        [Required]
-        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime recordDate { get; set; }
-
-        }
+    }
 
 }

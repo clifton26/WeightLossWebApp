@@ -9,7 +9,7 @@ namespace WebApplication4.ViewModels
     public class HomeViewModel
     {
         public IEnumerable<PhysicalInfoRecord> physicalRecords { get; set; }
-        public IEnumerable<FoodCalculator> foodRecords { get; set; }
+        public IEnumerable<Meal> meals { get; set; }
         public ApplicationUser user { get; set; }
     }
 }

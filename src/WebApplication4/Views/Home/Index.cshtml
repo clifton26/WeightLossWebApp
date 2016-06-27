@@ -97,52 +97,24 @@
                         </tr>
                     </thead>
                     <tbody style="color:black">
-                        @foreach (var regist in Model.foodRecords)
+                        @foreach (var regist in Model.meals)
                         {
                             <tr>
                                 
                                 <td>
-                                    @Html.DisplayFor(modelItem => regist.FoodName)
+                                    @Html.DisplayFor(modelItem => regist.MealName)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => regist.Grams) 
+                                    @Html.DisplayFor(modelItem => regist.quantity)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => regist.Lipid)
+                                    @Html.DisplayFor(modelItem => regist.totalLipids)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => regist.Calories)
+                                    @Html.DisplayFor(modelItem => regist.totalCalories)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => regist.recordDate)
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-            <div class="top-left table-responsive col-md-12">
-                <h3>Calories And Lipids History (Last 3 days)</h3>
-                <table class="table" style="background-color:#F8F8F8">
-                    <thead style="color:black">
-                        <tr>
-                            <th>Date</th>
-                            <th>Weight</th>
-                            <th>IMC</th>
-                        </tr>
-                    </thead>
-                    <tbody style="color:black">
-                        @foreach (var regist in Model.physicalRecords)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => regist.recordDate)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => regist.weight) Kg
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => regist.imc)
                                 </td>
                             </tr>
                         }

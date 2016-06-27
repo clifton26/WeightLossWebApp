@@ -206,11 +206,14 @@
             //alert(sumCalories);
             $('.totalLipds').text('Total: '+sumLipids);
             $('.totalCalories').text('Total :'+sumCalories);
-            
-           
-           
-                       
+                                 
         });
+
+        $('#tbFoodB').on('click', '#delete', function () {
+            $(this).parent().parent().remove();
+
+        });
+
 
        
     </script>
