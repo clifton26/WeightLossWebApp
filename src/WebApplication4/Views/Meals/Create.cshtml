@@ -100,6 +100,11 @@
     <script type="text/javascript">
 
         var tableCount = 0;
+		var sumCalories = 0;
+        var sumLipids = 0;
+        var ruleCalories = 0;
+        var ruleLipids = 0;
+
 
         function SetSelectedText(mealList) {
         var selectedText = mealList.options[mealList.selectedIndex].innerHTML;
@@ -159,10 +164,34 @@
             $("#tableCount").val(tableCount)
 
 
+            sumCalories = sumCalories + ruleCalories;
+            sumLipids = sumLipids + ruleLipids;
+           
+            $('.totalLipds').text('Total: '+sumLipids);
+            $('.totalCalories').text('Total :'+sumCalories);
         });
 
         $('#tbFoodB').on('click', '#delete', function () {
             tableCount -= 1;
+			var calorias = 0;
+            var lipidos = 0;
+
+            calorias = $(this).parent().parent().find('.calorias').html();
+            lipidos = $(this).parent().parent().find('.lipidos').html();
+
+            sumCalories = sumCalories - calorias;
+            sumLipids = sumLipids - lipidos;
+
+            $('.totalLipds').text('Total: ' + sumLipids);
+            $('.totalCalories').text('Total :' + sumCalories);
+
+
+            if (sumCalories < 1 || sumLipids < 1) {
+                sumCalories = 0;
+                sumLipids = 0;
+                $('.totalLipds').text('Total: ' + sumLipids);
+                $('.totalCalories').text('Total :' + sumCalories);
+            }
             $(this).parent().parent().remove();
 
         });
