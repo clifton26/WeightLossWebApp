@@ -195,7 +195,7 @@
             ruleLipids = (cnt1 * cnt2) / 100;
             ruleCalories = (cnt1 * cnt3) / 100;
        
-            $('#tbFood').append('<tr class="child"><td id>' + cnt + '<\/td><td>' + cnt1 + ' </td><td>' + ruleLipids + '  </td><td>' + ruleCalories + '  </td><td> <a href="#" class="btn btn-sm btn-danger" id="delete"><span class="glyphicon glyphicon-remove"></span> Delete</a><td></tr>');
+            $('#tbFood').append('<tr class="child"><td id>' + cnt + '<\/td><td>' + cnt1 + ' </td><td class="lipidos">' + ruleLipids + '  </td><td class="calorias">' + ruleCalories + '  </td><td> <a href="#" class="btn btn-sm btn-danger" id="delete"><span class="glyphicon glyphicon-remove"></span> Delete</a><td></tr>');
             
             
             sumCalories = sumCalories + ruleCalories;
@@ -207,16 +207,31 @@
         });
 
         $('#tbFoodB').on('click', '#delete', function () {
-            $(this).parent().parent().remove();
-            sumCalories = sumCalories - ruleCalories;
-            sumLipids = sumLipids - ruleLipids;
+            
+            var calorias = 0;
+            var lipidos = 0;
+
+            calorias = $(this).parent().parent().find('.calorias').html();
+            lipidos = $(this).parent().parent().find('.lipidos').html();
+
+            sumCalories = sumCalories - calorias;
+            sumLipids = sumLipids - lipidos;
 
             $('.totalLipds').text('Total: ' + sumLipids);
             $('.totalCalories').text('Total :' + sumCalories);
 
+            if (sumCalories < 0 && sumLipids < 0) {
+                sumCalories = 0;
+                sumLipids = 0;
+                $('.totalLipds').text('Total: ' + sumLipids);
+                $('.totalCalories').text('Total :' + sumCalories);
+            }
+
+            //Delete the row
+            $(this).parent().parent().remove();
+
+           
         });
-
-
-       
+              
     </script>
 }

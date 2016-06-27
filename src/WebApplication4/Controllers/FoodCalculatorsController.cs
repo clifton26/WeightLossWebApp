@@ -14,7 +14,7 @@ namespace WebApplication4.Controllers
     {
         private ApplicationDbContext _context;
 
-        public FoodCalculatorsController(ApplicationDbContext context)
+       public FoodCalculatorsController(ApplicationDbContext context)
         {
             _context = context;
         }
