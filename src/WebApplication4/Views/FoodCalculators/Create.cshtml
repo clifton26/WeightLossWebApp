@@ -141,6 +141,7 @@
 
         var sumCalories = 0;
         var sumLipids = 0;
+
         var ruleCalories = 0;
         var ruleLipids = 0;
 
@@ -208,6 +209,7 @@
 
         $('#tbFoodB').on('click', '#delete', function () {
             $(this).parent().parent().remove();
+
             sumCalories = sumCalories - ruleCalories;
             sumLipids = sumLipids - ruleLipids;
 
