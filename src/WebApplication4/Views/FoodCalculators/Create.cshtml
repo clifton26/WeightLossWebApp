@@ -96,27 +96,33 @@
             <h3>Food Calculator</h3>
             <table id="tbFood" class="table" style="background-color:#F8F8F8">
                 <thead style="color:black">
-                    <tr>
+                    <tr id="titleRow">
                         <th>Food</th>
                         <th>Quantity (gr)</th>
                         <th>Lipids</th>
-                        <th>Caloiries</th>
+                        <th>Calories</th>
                     </tr>
+                    
                 </thead>
                 <tbody style="color:black" id="tbFoodB">
                   
                 </tbody>
-            </table>
-        </div>
-
-
-
+                <tr class="totalColumn" style="color:black">
+                    <td class="totalCol"></td>
+                    <td class="totalCol"></td>
+                    <td class="totalLipds"></td>
+                    <td class="totalCalories"></td>
+                </tr>
+            </table>          
+         </div>
+                
         <div class="form-group"> 
             <div class="col-md-offset-2 col-md-10">
                 <!-- <input type="submit" value="Create" class="btn btn-default" /> -->
                 <button type="submit" value="Create" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Create</button>
             </div>
         </div>
+        
     </div>
 </form>
 
@@ -132,10 +138,16 @@
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
     <script type="text/javascript">
+
+        var sumCalories = 0;
+        var sumLipids = 0;
+
         function SetSelectedText(mealList) {
         var selectedText = mealList.options[mealList.selectedIndex].innerHTML;
         document.getElementById("hfMealName").value = selectedText;
+        
         }
+                     
 
         $(function () {
             $('#SearchString').autocomplete({
@@ -171,6 +183,7 @@
             });
         });
 
+        
         $('#addFood').click(function () {
             var cnt = document.getElementById("SearchString").value;
             var cnt1 = document.getElementById("idFoodQt").value;
@@ -178,18 +191,27 @@
             var cnt3 = document.getElementById("Calorias").value;
 
             var ruleLipids = (cnt1 * cnt2 ) /100;
-            var ruleCalories = (cnt1 * cnt3) / 100; 
+            var ruleCalories = (cnt1 * cnt3) / 100;
        
-            $('#tbFoodB').append('<tr class="child"><td>' + cnt + '<\/td><td>' + cnt1 + ' </td><td>' + ruleLipids + '  </td><td>' + ruleCalories+ '  </td</tr>');
+            $('#tbFood').append('<tr class="child"><td id>' + cnt + '<\/td><td>' + cnt1 + ' </td><td>' + ruleLipids + '  </td><td>' + ruleCalories + '  </td</tr>');
             //Remove -> o botão .remF ainda nao existe 
             /*  $('#tbFood').on('click', '.remF', function () {
                 $(this).parent().parent().remove();
                 alert("1");
                 
             }); */
-                                  
+            
+            sumCalories = sumCalories + ruleCalories;
+            sumLipids = sumLipids + ruleLipids;
+            //alert(sumCalories);
+            $('.totalLipds').text('Total: '+sumLipids);
+            $('.totalCalories').text('Total :'+sumCalories);
+            
+           
+           
+                       
         });
 
-
+       
     </script>
 }
