@@ -20,7 +20,7 @@ namespace WebApplication4.Controllers
         public IActionResult Index()
         {
             var user = _context.Users.Single(u => u.UserName.Equals(User.Identity.Name));
-            var records = _context.PhysicalInfoRecord.Where(p => p.OwnerId.Equals(user.Id)).ToList();
+            var records = _context.PhysicalInfoRecord.Where(p => p.OwnerId.Equals(user.Id)).ToList().OrderByDescending(p => p.recordDate);
             return View(records);
         }
 

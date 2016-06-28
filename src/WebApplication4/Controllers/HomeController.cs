@@ -29,8 +29,11 @@ namespace WebApplication4.Controllers
                 viewModel.user = user;
                 DateTime now = DateTime.Now;
                 DateTime threeDaysAgo = new DateTime(now.Year, now.Month, now.Day - 3);
-                viewModel.physicalRecords = _context.PhysicalInfoRecord.Where(r => r.OwnerId.Equals(user.Id) && r.recordDate.Date >= threeDaysAgo.Date && r.recordDate.Date <= DateTime.Now.Date).ToList();
-                viewModel.meals = _context.Meal.Where(r => r.OwnerId.Equals(user.Id) && r.recordDate.Date.Equals(DateTime.Now.Date)).ToList();
+
+                viewModel.physicalRecords = _context.PhysicalInfoRecord.Where(r => r.OwnerId.Equals(user.Id) && r.recordDate.Date >= threeDaysAgo.Date && r.recordDate.Date <= DateTime.Now.Date).ToList().OrderByDescending(p => p.recordDate);
+
+                viewModel.meals = _context.Meal.Where(r => r.OwnerId.Equals(user.Id) && r.recordDate.Date.Equals(DateTime.Now.Date)).ToList().OrderByDescending(m => m.recordDate);
+
                 return View(viewModel);
 
             }else

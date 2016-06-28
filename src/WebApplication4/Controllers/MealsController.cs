@@ -23,7 +23,8 @@ namespace WebApplication4.Controllers
         public IActionResult Index()
         {
             var applicationDbContext = _context.Meal.Include(m => m.Owner);
-            return View(applicationDbContext.ToList());
+            var ordered = applicationDbContext.ToList().OrderByDescending(m => m.recordDate);
+            return View(ordered);
         }
 
         // GET: Meals/Details/5
@@ -40,7 +41,14 @@ namespace WebApplication4.Controllers
                 return HttpNotFound();
             }
 
-            return View(meal);
+            IEnumerable<FoodCalculator> ingredients = _context.FoodCalculator.Where(f => f.MealId == meal.Id);
+
+            MealDetails viewModel = new MealDetails();
+
+            viewModel.meal = meal;
+            viewModel.regists = ingredients;
+
+            return View(viewModel);
         }
 
         // GET: Meals/Create
@@ -70,7 +78,15 @@ namespace WebApplication4.Controllers
 
             Meal mealToAdd = new Meal();
 
+
+            String totalCalories = campos["totalCalories"];
+            String totalLipids = campos["totalLipds"];
+
             mealToAdd.Owner = user;
+
+            mealToAdd.totalCalories = int.Parse(totalCalories);
+
+            mealToAdd.totalLipids = int.Parse(totalLipids);
 
             mealToAdd.MealName = campos["MealName"];
 

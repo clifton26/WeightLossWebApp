@@ -21,6 +21,10 @@ namespace WebApplication4.Models
 
         public String MealName { get; set; }
 
+        public int totalCalories { get; set; }
+
+        public int totalLipids { get; set; }
+
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime recordDate { get; set; }

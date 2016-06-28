@@ -84,13 +84,13 @@
                     </tbody>
                 </table>
             </div>
+
             <div class="top-left table-responsive col-md-12">
                 <h3>Food Record History (Today)</h3>
                 <table class="table" style="background-color:#F8F8F8">
                     <thead style="color:black">
                         <tr>
                             <th>Food</th>
-                            <th>Quantity (gr)</th> 
                             <th>Lipids</th>
                             <th>Caloiries</th>
                             <th>Date</th>
@@ -100,20 +100,17 @@
                         @foreach (var regist in Model.meals)
                         {
                             <tr>
-                                
                                 <td>
-                                    @Html.DisplayFor(modelItem => regist.MealName)
-                                </td>
-                               <!-- <td>
-                                    Html.DisplayFor(modelItem => regist.quantity)
+                                    <a asp-action="Details" asp-route-id="@regist.Id">
+                                        @Html.DisplayFor(modelItem => regist.MealName)
+                                    </a>
                                 </td>
                                 <td>
-                                    Html.DisplayFor(modelItem => regist.totalLipids)
+                                    @Html.DisplayFor(modelItem => regist.totalLipids)
                                 </td>
                                 <td>
-                                    Html.DisplayFor(modelItem => regist.totalCalories)
+                                    @Html.DisplayFor(modelItem => regist.totalCalories)
                                 </td>
-                                -->
                                 <td>
                                     @Html.DisplayFor(modelItem => regist.recordDate)
                                 </td>

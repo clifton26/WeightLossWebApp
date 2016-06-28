@@ -1,50 +1,41 @@
 @model IEnumerable<WebApplication4.Models.PhysicalInfoRecord>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Physical Records ";
 }
 
-<h2>Index</h2>
+<h2>Physical Records</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.height)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.imc)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.recordDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.weight)
-        </th>
-        <th></th>
-    </tr>
-    
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.height)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.recordDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.weight)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
-        </td>
-    </tr>
-}
-</table>
+<div class="top-left table-responsive col-md-12">
+    <table class="table" style="background-color:#F8F8F8">
+        <thead style="color:black">
+            <tr>
+                <th>Height</th>
+                <th>Weight</th>
+                <th>IMC</th>
+                <th>Date</th>
+
+            </tr>
+        </thead>
+        <tbody style="color:black">
+            @foreach (var regist in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => regist.height) m
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => regist.weight) Kg
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => regist.imc)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => regist.recordDate)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

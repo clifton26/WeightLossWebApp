@@ -1,30 +1,63 @@
-@model WebApplication4.Models.Meal
+@model WebApplication4.ViewModels.MealDetails
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>@Model.meal.MealName  @Model.meal.recordDate.Date</h2>
 
-<div>
-    <h4>Meal</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.MealName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.MealName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.recordDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.recordDate)
-        </dd>
-    </dl>
+<div class="top-left col-md-offset-2 col-md-8">
+    <h3>Meal Info </h3>
+    <table class="table" style="background-color:#F8F8F8">
+        <tbody style="color:black">
+            <tr>
+                <td>
+                    Meal: @Model.meal.MealName
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Total Calories: @Model.meal.totalCalories
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Total Lipids: @Model.meal.totalLipids
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </div>
-<p>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</p>
+<div class="top-left table-responsive col-md-12">
+    <h3>Meal food</h3>
+    <table class="table" style="background-color:#F8F8F8">
+        <thead style="color:black">
+            <tr>
+                <th>Food</th>
+                <th>Quantity</th>
+                <th>Lipids</th>
+                <th>Caloiries</th>
+            </tr>
+        </thead>
+        <tbody style="color:black">
+            @foreach (var regist in Model.regists)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => regist.FoodName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => regist.FoodQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => regist.Lipid)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => regist.Calories)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

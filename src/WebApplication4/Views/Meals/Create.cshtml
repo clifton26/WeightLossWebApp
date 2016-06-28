@@ -61,10 +61,14 @@
         </div>
         <div class="table-responsive col-md-12">
             <input type="hidden" id="tableCount" name="tableCount" />
+            <input type="hidden" id="totalLipds" name="totalLipds" />
+            <input type="hidden" id="totalCalories" name="totalCalories" />
+
+
             <h3>Food Calculator</h3>
             <table id="tbFood" class="table" style="background-color:#F8F8F8">
                 <thead style="color:black">
-                    <tr>
+                    <tr id="titleRow">
                         <th>Food</th>
                         <th>Quantity (gr)</th>
                         <th>Lipids</th>
@@ -72,6 +76,15 @@
                     </tr>
                 </thead>
                 <tbody style="color:black" id="tbFoodB"></tbody>
+
+                <tr class="totalColumn" style="color:black">
+                    <td class="totalCol"></td>
+                    <td class="totalCol"></td>
+                    <td class="totalLipds">
+                    </td>
+                    <td class="totalCalories">
+                    </td>
+                </tr>
             </table>
         </div>
 
@@ -168,7 +181,11 @@
             sumLipids = sumLipids + ruleLipids;
            
             $('.totalLipds').text('Total: '+sumLipids);
-            $('.totalCalories').text('Total :'+sumCalories);
+            $('.totalCalories').text('Total :' + sumCalories);
+
+            $('#totalLipds').val(sumLipids);
+            $('#totalCalories').val(sumCalories);
+
         });
 
         $('#tbFoodB').on('click', '#delete', function () {
@@ -181,16 +198,19 @@
 
             sumCalories = sumCalories - calorias;
             sumLipids = sumLipids - lipidos;
-
+        
             $('.totalLipds').text('Total: ' + sumLipids);
             $('.totalCalories').text('Total :' + sumCalories);
+            $('#totalLipds').val(sumLipids);
+            $('#totalCalories').val(sumCalories);
 
-
-            if (sumCalories < 1 || sumLipids < 1) {
+            if (sumCalories < 1 || sumLipids < 1) { 
                 sumCalories = 0;
                 sumLipids = 0;
                 $('.totalLipds').text('Total: ' + sumLipids);
                 $('.totalCalories').text('Total :' + sumCalories);
+                $('#totalLipds').val(sumLipids);
+                $('#totalCalories').val(sumCalories);
             }
             $(this).parent().parent().remove();
 
