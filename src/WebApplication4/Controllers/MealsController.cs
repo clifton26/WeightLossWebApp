@@ -84,9 +84,9 @@ namespace WebApplication4.Controllers
 
             mealToAdd.Owner = user;
 
-            mealToAdd.totalCalories = int.Parse(totalCalories.Substring(0, totalCalories.Length - 1));
+            mealToAdd.totalCalories = int.Parse(totalCalories.Replace(".", ""));
 
-            mealToAdd.totalLipids = int.Parse(totalLipids.Substring(0, totalLipids.Length - 1));
+            mealToAdd.totalLipids = int.Parse(totalLipids.Replace(".", ""));
 
             mealToAdd.MealName = campos["MealName"];
 
