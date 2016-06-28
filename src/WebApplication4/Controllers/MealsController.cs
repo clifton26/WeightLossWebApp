@@ -84,9 +84,9 @@ namespace WebApplication4.Controllers
 
             mealToAdd.Owner = user;
 
-            mealToAdd.totalCalories = int.Parse(totalCalories.Replace(".", ""));
+            mealToAdd.totalCalories = int.Parse(totalCalories.Substring(0, totalCalories.Length - 1).Replace(".", ""));
 
-            mealToAdd.totalLipids = int.Parse(totalLipids.Replace(".", ""));
+            mealToAdd.totalLipids = int.Parse(totalLipids.Substring(0, totalLipids.Length - 1).Replace(".", ""));
 
             mealToAdd.MealName = campos["MealName"];
 
@@ -116,9 +116,9 @@ namespace WebApplication4.Controllers
 
                 newCalculator.Grams = 100 * int.Parse(quantity.Substring(0, quantity.Length - 1));
 
-                newCalculator.Lipid = int.Parse(lipids.Substring(0, quantity.Length - 1).Replace(".", ""));
+                newCalculator.Lipid = int.Parse(lipids.Substring(0, lipids.Length - 1).Replace(".", ""));
 
-                newCalculator.Calories = int.Parse(calories.Substring(0, quantity.Length - 1).Replace(".", ""));
+                newCalculator.Calories = int.Parse(calories.Substring(0, calories.Length - 1).Replace(".", ""));
 
                 _context.FoodCalculator.Add(newCalculator);
 
