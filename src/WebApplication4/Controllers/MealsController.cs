@@ -109,14 +109,16 @@ namespace WebApplication4.Controllers
                 String quantity = campos["quantity" + i];
                 String lipids = campos["lipids" + i];
                 String calories = campos["calories" + i];
+                
+
 
                 newCalculator.FoodQuantity = int.Parse(quantity.Substring(0, quantity.Length - 1));
 
                 newCalculator.Grams = 100 * int.Parse(quantity.Substring(0, quantity.Length - 1));
 
-                newCalculator.Lipid = int.Parse(lipids.Replace(".", "").Substring(0, lipids.Length -1));
+                newCalculator.Lipid = int.Parse(lipids.Replace(".", "").Replace("\\", ""));
 
-                newCalculator.Calories = int.Parse(calories.Replace(".", "").Substring(0, calories.Length - 1));
+                newCalculator.Calories = int.Parse(lipids.Replace(".", "").Replace("\\", ""));
 
                 _context.FoodCalculator.Add(newCalculator);
 
