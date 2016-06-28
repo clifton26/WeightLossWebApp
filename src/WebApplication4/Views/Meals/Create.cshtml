@@ -80,10 +80,8 @@
                 <tr class="totalColumn" style="color:black">
                     <td class="totalCol"></td>
                     <td class="totalCol"></td>
-                    <td class="totalLipds">
-                    </td>
-                    <td class="totalCalories">
-                    </td>
+                    <td class="totalLipds"></td>
+                    <td class="totalCalories"></td>
                 </tr>
             </table>
         </div>
@@ -168,7 +166,7 @@
             var ruleLipids = (cnt1 * cnt2 ) /100;
             var ruleCalories = (cnt1 * cnt3) / 100;
 
-            $('#tbFoodB').append('<tr class="child"><td>' + cnt + '<\/td><td>' + cnt1 + ' </td><td>' + ruleLipids + '  </td><td>' + ruleCalories + '  </td> <td> <a href="#" class="btn btn-sm btn-danger" id="delete"><span class="glyphicon glyphicon-remove"></span> Delete</a><td> </tr>');
+            $('#tbFoodB').append('<tr class="child"><td>' + cnt + '<\/td><td>' + cnt1 + ' </td><td class="lipidos">' + ruleLipids + '  </td><td class="calorias">' + ruleCalories + '  </td> <td> <a href="#" class="btn btn-sm btn-danger" id="delete"><span class="glyphicon glyphicon-remove"></span> Delete</a><td> </tr>');
             $('#tbFoodB').append('<input type="hidden" name="food' + tableCount + '" value=' + cnt + '" />');
             $('#tbFoodB').append('<input type="hidden" name="quantity' + tableCount + '" value=' + cnt1 + '" />');
             $('#tbFoodB').append('<input type="hidden" name="lipids' + tableCount + '" value=' + ruleLipids + '" />');
@@ -180,7 +178,7 @@
             sumCalories = sumCalories + ruleCalories;
             sumLipids = sumLipids + ruleLipids;
            
-            $('.totalLipds').text('Total: '+sumLipids);
+            $('.totalLipds').text('Total: '+ sumLipids);
             $('.totalCalories').text('Total :' + sumCalories);
 
             $('#totalLipds').val(sumLipids);
@@ -196,9 +194,15 @@
             calorias = $(this).parent().parent().find('.calorias').html();
             lipidos = $(this).parent().parent().find('.lipidos').html();
 
+            console.log(calorias);
+            console.log(lipidos);
+
             sumCalories = sumCalories - calorias;
             sumLipids = sumLipids - lipidos;
         
+          
+
+
             $('.totalLipds').text('Total: ' + sumLipids);
             $('.totalCalories').text('Total :' + sumCalories);
             $('#totalLipds').val(sumLipids);
