@@ -116,9 +116,9 @@ namespace WebApplication4.Controllers
 
                 newCalculator.Grams = 100 * int.Parse(quantity.Substring(0, quantity.Length - 1));
 
-                newCalculator.Lipid = int.Parse(lipids.Replace(".", "").Replace("\\", ""));
+                newCalculator.Lipid = int.Parse(lipids.Substring(0, quantity.Length - 1).Replace(".", ""));
 
-                newCalculator.Calories = int.Parse(lipids.Replace(".", "").Replace("\\", ""));
+                newCalculator.Calories = int.Parse(calories.Substring(0, quantity.Length - 1).Replace(".", ""));
 
                 _context.FoodCalculator.Add(newCalculator);
 
